@@ -5,840 +5,331 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JP Creative - Penerbit Profesional</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#1a1a2e',
-                        secondary: '#16213e',
-                        accent: '#c9a227',
-                        gold: '#d4af37',
-                        cream: '#f5f0e8',
-                        dark: '#0f0f1a'
-                    },
-                    fontFamily: {
-                        display: ['Playfair Display', 'serif'],
-                        body: ['Source Sans 3', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>tailwind.config={theme:{extend:{fontFamily:{inter:['Inter','sans-serif']}}}}</script>
     <style>
-        /* CSS Styles (Sama seperti sebelumnya) */
-        :root {
-            --bg: #0f0f1a;
-            --fg: #f5f0e8;
-            --muted: #8b8b9e;
-            --accent: #c9a227;
-            --card: rgba(26, 26, 46, 0.9);
-            --border: rgba(201, 162, 39, 0.3);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Source Sans 3', sans-serif; background: var(--bg); color: var(--fg); overflow-x: hidden; }
-        .font-display { font-family: 'Playfair Display', serif; }
-        .hero-bg { background: linear-gradient(135deg, rgba(15, 15, 26, 0.85) 0%, rgba(26, 26, 46, 0.75) 100%); background-size: cover; background-position: center; background-attachment: fixed; }
-        .glass-card { background: rgba(26, 26, 46, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(201, 162, 39, 0.2); }
-        .gold-gradient { background: linear-gradient(135deg, #c9a227 0%, #d4af37 50%, #c9a227 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .btn-gold { background: linear-gradient(135deg, #c9a227 0%, #d4af37 50%, #c9a227 100%); background-size: 200% 200%; animation: shimmer 3s ease infinite; }
-        @keyframes shimmer { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .menu-item { position: relative; }
-        .menu-item::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s ease; }
-        .menu-item:hover::after { width: 100%; }
-        .floating { animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
-        .parallax-bg { transform: translateZ(0); will-change: transform; }
-        .admin-sidebar { background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1a 100%); }
-        .admin-card { background: rgba(26, 26, 46, 0.6); border: 1px solid rgba(201, 162, 39, 0.15); }
-        .input-style { background: rgba(15, 15, 26, 0.8); border: 1px solid rgba(201, 162, 39, 0.3); color: #f5f0e8; transition: all 0.3s ease; }
-        .input-style:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.2); }
-        .upload-zone { border: 2px dashed rgba(201, 162, 39, 0.4); background: rgba(15, 15, 26, 0.5); transition: all 0.3s ease; }
-        .upload-zone:hover { border-color: var(--accent); background: rgba(201, 162, 39, 0.05); }
-        .tab-active { background: linear-gradient(135deg, rgba(201, 162, 39, 0.2) 0%, rgba(201, 162, 39, 0.1) 100%); border-left: 3px solid var(--accent); }
-        @media (prefers-reduced-motion: reduce) { .reveal { transition: none; opacity: 1; transform: none; } .floating { animation: none; } .btn-gold { animation: none; } }
-        ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: rgba(201, 162, 39, 0.4); border-radius: 4px; } ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
-        
-        /* Loading Overlay */
-        #loadingOverlay { position: fixed; inset: 0; background: rgba(15,15,26,0.95); z-index: 9999; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 20px; }
-        .spinner { width: 50px; height: 50px; border: 4px solid rgba(201, 162, 39, 0.2); border-top-color: #c9a227; border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
+        *{font-family:'Inter',sans-serif}html{scroll-behavior:smooth}
+        ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:#0a0a0a}
+        ::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
+        @keyframes fadeInUp{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
+        @keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+        @keyframes tabSlide{0%{opacity:0;transform:translateY(6px)}100%{opacity:1;transform:translateY(0)}}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .anim-up{animation:fadeInUp .8s ease-out forwards;opacity:0}
+        .d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}
+        .glass{background:rgba(23,23,23,.6);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+        .hero-ov{background:linear-gradient(to bottom,rgba(0,0,0,.7) 0%,rgba(0,0,0,.45) 50%,#0a0a0a 100%)}
+        .hero-grad{background:linear-gradient(160deg,#1a0505 0%,#3d1212 18%,#5a2010 40%,#6b3015 58%,#4a1a08 78%,#1a0d05 100%)}
+        .pricing-hl{border:2px solid #a855f7;box-shadow:0 0 30px rgba(168,85,247,.2)}
+        .admin-sb::-webkit-scrollbar{width:4px}.admin-sb::-webkit-scrollbar-track{background:transparent}
+        .admin-sb::-webkit-scrollbar-thumb{background:#334155;border-radius:2px}
+        .tcb:checked+.tlbl{background:#a855f7}.tcb:checked+.tlbl::after{transform:translateX(20px)}
+        .tlbl{width:44px;height:24px;background:#cbd5e1;border-radius:12px;position:relative;cursor:pointer;transition:background .3s;display:inline-block}
+        .tlbl::after{content:'';position:absolute;top:2px;left:2px;width:20px;height:20px;background:#fff;border-radius:50%;transition:transform .3s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+        .pwd-shake{animation:shake .4s ease-in-out}
+        .itab{transition:all .15s}.itab.on{background:#f3e8ff;color:#7c3aed;border-color:#c084fc}
+        .pane-in{animation:tabSlide .2s ease-out}
+        .spin{animation:spin 1s linear infinite}
+        .cloud-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;transition:background .3s}
     </style>
 </head>
-<body>
-    <!-- Loading Overlay -->
-    <div id="loadingOverlay">
-        <div class="spinner"></div>
-        <p class="text-cream/80">Memuat Data...</p>
+<body class="bg-[#0a0a0a] text-white">
+<div id="app"></div>
+<div id="toast-box" class="fixed top-6 right-6 z-[9999] flex flex-col gap-3"></div>
+
+<div id="pwd-modal" class="hidden fixed inset-0 z-[9998] flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closePwd()"></div>
+    <div id="pwd-card" class="relative bg-[#1a1a1a] border border-white/10 rounded-2xl p-8 w-full max-w-sm shadow-2xl">
+        <button onclick="closePwd()" class="absolute top-4 right-4 text-neutral-500 hover:text-white"><span class="iconify" data-icon="lucide:x" data-width="20"></span></button>
+        <div class="text-center mb-6"><div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4"><span class="iconify text-purple-400" data-icon="lucide:lock" data-width="28"></span></div><h3 class="text-xl font-semibold">Akses Admin</h3><p class="text-sm text-neutral-500 mt-1">Masukkan password</p></div>
+        <input type="password" id="pwd-input" placeholder="Password" autocomplete="off" class="w-full px-4 py-3 bg-[#0a0a0a] border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500" onkeydown="if(event.key==='Enter')checkPwd()">
+        <p id="pwd-err" class="hidden text-red-400 text-xs mt-2 flex items-center gap-1"><span class="iconify" data-icon="lucide:alert-circle" data-width="14"></span>Password salah.</p>
+        <button onclick="checkPwd()" class="w-full mt-4 px-6 py-3 bg-purple-500 hover:bg-purple-600 text-white text-sm font-medium rounded-xl">Masuk</button>
     </div>
+</div>
 
-    <!-- View Toggle -->
-    <div id="viewToggle" class="fixed top-4 right-4 z-[100] flex gap-2 hidden">
-        <button onclick="showLanding()" id="btnLanding" class="px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-accent text-primary">Landing Page</button>
-        <button onclick="showAdmin()" id="btnAdmin" class="px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-primary/80 text-cream border border-accent/30 hover:bg-accent hover:text-primary">Admin Panel</button>
-    </div>
+<script>
+/* ========== ASSETS ========== */
+var LOGO_ID='1XsU73SXdWvlx5mVdpDrPWn3iB1rcqq7w';
+var BG_ID='1n12goouIU_gLQLyffHNg2xsMv-4ROb17';
+var LOGO_URL='https://lh3.googleusercontent.com/d/'+LOGO_ID+'=s400';
+var BG_URL='https://lh3.googleusercontent.com/d/'+BG_ID+'=s1920';
+var LOGO_FB=['https://drive.google.com/thumbnail?id='+LOGO_ID+'&sz=w400','https://drive.google.com/uc?export=view&id='+LOGO_ID];
+var BG_FB=['https://drive.google.com/thumbnail?id='+BG_ID+'&sz=w1920','https://drive.google.com/uc?export=view&id='+BG_ID];
+function imgFallback(img,fbs,i){i=i||0;if(i>=fbs.length){img.style.display='none';return}img.onerror=function(){imgFallback(img,fbs,i+1)};img.src=fbs[i]}
 
-    <!-- LANDING PAGE -->
-    <div id="landingPage">
-        <!-- Navigation -->
-        <nav class="fixed top-0 left-0 right-0 z-50 glass-card">
-            <div class="max-w-7xl mx-auto px-6 py-4">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <img id="navLogo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 100 100'%3E%3Crect fill='%23c9a227' rx='10' width='100' height='100'/%3E%3Ctext x='50' y='65' font-family='serif' font-size='40' font-weight='bold' fill='%231a1a2e' text-anchor='middle'%3EJP%3C/text%3E%3C/svg%3E" alt="Logo" class="h-12 w-auto">
-                        <span class="font-display text-2xl font-bold gold-gradient">JP Creative</span>
-                    </div>
-                    <div class="hidden lg:flex items-center gap-8">
-                        <div id="desktopMenu" class="flex items-center gap-6"></div>
-                    </div>
-                    <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-cream hover:text-accent transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                    </button>
-                </div>
-                <div id="mobileMenu" class="hidden lg:hidden mt-4 pb-4 border-t border-accent/20 pt-4">
-                    <div id="mobileMenuItems" class="flex flex-col gap-4"></div>
-                </div>
-            </div>
-        </nav>
+/* ========== DEFAULTS ========== */
+var DEFAULTS={
+    hero:{title:'Wujudkan Karya Tulismu Bersama JP Creative',subtitle:'Penerbit profesional yang membantu penulis pemula hingga berpengalaman menerbitkan buku berkualitas dengan harga terjangkau. Dari naskah hingga buku cetak siap distribusi.',ctaText:'Terbitkan Buku Sekarang',ctaLink:'#packages'},
+    menus:[{text:'Ghostwriter',link:'#ghostwriter',icon:'lucide:pen-tool'},{text:'Pelatihan Menulis',link:'#pelatihan',icon:'lucide:graduation-cap'},{text:'Terbit Murah 50K',link:'#terbit-murah',icon:'lucide:book-open'},{text:'Paket Penerbitan',link:'#packages',icon:'lucide:package'}],
+    services:[
+        {id:'ghostwriter',icon:'lucide:pen-tool',title:'Ghostwriter',description:'Jasa penulisan buku oleh penulis profesional. Anda cukup sampaikan ide, kami yang mewujudkannya.',features:['Fiksi & Non-Fiksi','Penulis Berpengalaman','Revisi Hingga Puas','Konsultasi Gratis']},
+        {id:'pelatihan',icon:'lucide:graduation-cap',title:'Pelatihan Menulis',description:'Kelas menulis intensif untuk meningkatkan kemampuan menulis Anda.',features:['Kelas Online & Offline','Mentor Profesional','Sertifikat Peserta','Modul Lengkap']},
+        {id:'terbit-murah',icon:'lucide:book-open',title:'Terbit Murah Mulai 50K',description:'Paket penerbitan paling terjangkau untuk penulis pemula.',features:['ISBN/QRCBN Resmi','Desain Cover Standar','Cetak Min. 20 Eksemplar','File Digital PDF']},
+        {id:'paket-lengkap',icon:'lucide:package',title:'Paket Penerbitan Lengkap',description:'Layanan penerbitan menyeluruh dari editing hingga distribusi.',features:['Editing Profesional','Layout & Typesetting','Distribusi Digital','Promosi Online']}
+    ],
+    packages:[
+        {id:'starter',name:'Starter',price:'50K',priceNote:'Mulai dari',description:'Paket terjangkau untuk memulai',features:['ISBN/QRCBN Resmi','Desain Cover Standar','Cetak minimal 20 Eksemplar','File Digital PDF'],highlight:false},
+        {id:'standard',name:'Standard',price:'1.250K',priceNote:'Mulai dari',description:'Paket lengkap untuk penulis serius',features:['ISBN/QRCBN Resmi','Desain Cover Premium','Cetak 25 Eksemplar','Editing Dasar','Layout Profesional','File Digital PDF & EPUB'],highlight:true},
+        {id:'premium',name:'Premium',price:'1.5 jt',priceNote:'Mulai dari',description:'Paket premium untuk kualitas maksimal',features:['ISBN/QRCBN Resmi','Desain Cover Custom','Cetak 30 Eksemplar','Editing Profesional','Layout Premium','Distribusi Digital','Promosi Online','File Digital Lengkap'],highlight:false},
+        {id:'ghostwriter-pkg',name:'Ghostwriter',price:'1.5Jt',priceNote:'Mulai dari',description:'Jasa penulisan lengkap oleh tim kami',features:['Penulis Profesional','Riset Materi','Editing 3x','Desain Cover','dapt bukti Cetak 5 Eksemplar','ISBN/QRCBN Resmi','Konsultasi Ilimitas'],highlight:false}
+    ],
+    pages:[{id:'tentang',title:'Mengapa Memilih JP Creative?',content:'JP Creative adalah penerbit independen yang telah membantu ratusan penulis menerbitkan karya mereka.\n\nDengan tim profesional dan proses yang transparan, kami memastikan setiap buku yang terbit memenuhi standar kualitas tinggi.',image:'',show:true}],
+    footer:{desc:'Penerbit profesional yang membantu mewujudkan karya tulis terbaik Anda.',address:'Jl. Kenanga 3. Blok K10/20. Karangsatria. Tambun Utara, Kab. Bekasi',phone:'0821-1203-8795',email:'info@jpcreative.id',ig:'https://instagram.com/jpcreative',fb:'https://facebook.com/jpcreative',tt:'https://tiktok.com/@jpcreative'}
+};
 
-        <!-- Hero Section -->
-        <section id="heroSection" class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden">
-            <div id="heroBgContainer" class="absolute inset-0 z-0">
-                <img id="heroBgImage" src="" alt="" class="w-full h-full object-cover parallax-bg">
-                <div class="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/60 to-primary/90"></div>
-            </div>
-            <div class="absolute top-20 left-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl floating"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl floating" style="animation-delay: -3s;"></div>
+/* ========== STATE ========== */
+var D,section='dashboard',editMode=false,editIdx=-1,sbOpen=false;
+var cloudStatus='idle'; /* idle | sending | ok | fail */
 
-            <div class="relative z-10 max-w-5xl mx-auto px-6 text-center pt-24">
-                <div class="reveal">
-                    <h1 id="heroTitle" class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-                        <span class="text-cream">Wujudkan Karya Tulismu</span><br>
-                        <span class="gold-gradient">Bersama JP Creative</span>
-                    </h1>
-                </div>
-                <div class="reveal" style="transition-delay: 0.2s;">
-                    <p id="heroSubtitle" class="text-lg md:text-xl text-cream/80 max-w-2xl mx-auto mb-10 leading-relaxed"></p>
-                </div>
-                <div class="reveal flex flex-col sm:flex-row gap-4 justify-center" style="transition-delay: 0.4s;">
-                    <a href="#layanan" class="btn-gold px-8 py-4 rounded-full font-semibold text-primary hover:shadow-lg hover:shadow-accent/30 transition-all transform hover:scale-105">Terbitkan Buku Sekarang</a>
-                    <a href="#tentang" class="px-8 py-4 rounded-full font-semibold text-cream border-2 border-accent/50 hover:bg-accent/10 transition-all">Pelajari Lebih Lanjut</a>
-                </div>
-                <!-- Stats -->
-                <div class="reveal mt-16 grid grid-cols-2 md:grid-cols-4 gap-6" style="transition-delay: 0.6s;">
-                    <div class="glass-card rounded-2xl p-6"><div class="text-3xl md:text-4xl font-bold gold-gradient">500+</div><div class="text-cream/70 text-sm mt-1">Buku Terbit</div></div>
-                    <div class="glass-card rounded-2xl p-6"><div class="text-3xl md:text-4xl font-bold gold-gradient">300+</div><div class="text-cream/70 text-sm mt-1">Penulis</div></div>
-                    <div class="glass-card rounded-2xl p-6"><div class="text-3xl md:text-4xl font-bold gold-gradient">50K</div><div class="text-cream/70 text-sm mt-1">Mulai dari</div></div>
-                    <div class="glass-card rounded-2xl p-6"><div class="text-3xl md:text-4xl font-bold gold-gradient">5+</div><div class="text-cream/70 text-sm mt-1">Tahun Pengalaman</div></div>
-                </div>
-            </div>
-            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-                <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
-            </div>
-        </section>
+/* ========== STORAGE ========== */
+function getSU(){try{return localStorage.getItem('jpc_url')||''}catch(e){return ''}}
+function setSU(u){try{if(u)localStorage.setItem('jpc_url',u);else localStorage.removeItem('jpc_url')}catch(e){}}
+function load(){try{var s=localStorage.getItem('jpc_data');if(s)return JSON.parse(s)}catch(e){}return JSON.parse(JSON.stringify(DEFAULTS))}
+function saveLocal(){try{localStorage.setItem('jpc_data',JSON.stringify(D));return true}catch(e){return false}}
+function isB64(s){return s&&s.indexOf('data:')===0}
+function stripCloud(d){var c=JSON.parse(JSON.stringify(d));(c.pages||[]).forEach(function(p){if(isB64(p.image))p.image='[LOCAL]'});return c}
+function mergeLocal(c,l){if(!l)return c;(c.pages||[]).forEach(function(cp,i){if(cp.image==='[LOCAL]'&&l.pages&&l.pages[i]&&l.pages[i].image)cp.image=l.pages[i].image});return c}
 
-        <!-- Services Section -->
-        <section id="layanan" class="py-24 bg-gradient-to-b from-primary to-dark relative">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-16 reveal">
-                    <h2 class="font-display text-3xl md:text-5xl font-bold text-cream mb-4">Layanan Kami</h2>
-                    <p class="text-cream/70 max-w-2xl mx-auto">Berbagai layanan penerbitan profesional untuk mewujudkan karya tulis impian Anda</p>
-                </div>
-                <div id="servicesGrid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
-            </div>
-        </section>
+/* ========== CORE: SAVE with CLOUD FEEDBACK ========== */
+function save(){
+    if(!saveLocal()){toast('Gagal simpan lokal. Storage penuh.','error');return}
+    var url=getSU();
+    if(!url){
+        toast('Tersimpan lokal saja (cloud belum diatur)','info');
+        cloudStatus='idle';updateDot();return;
+    }
+    /* Kirim ke cloud dengan feedback jelas */
+    cloudStatus='sending';updateDot();
+    var x=new XMLHttpRequest();
+    x.open('POST',url,true);
+    x.setRequestHeader('Content-Type','application/json');
+    x.timeout=15000;
+    x.ontimeout=function(){
+        cloudStatus='fail';updateDot();
+        toast('Cloud timeout! Periksa: 1) URL benar 2) Script sudah di-deploy 3) Access=Anyone','error');
+    };
+    x.onerror=function(){
+        cloudStatus='fail';updateDot();
+        toast('Cloud gagal! Kemungkinan: URL salah, script belum di-authorize, atau CORS diblokir.','error');
+    };
+    x.onload=function(){
+        if(x.status>=200&&x.status<300){
+            cloudStatus='ok';updateDot();
+            toast('Tersimpan lokal + cloud berhasil!','success');
+        }else{
+            cloudStatus='fail';updateDot();
+            toast('Cloud error HTTP '+x.status+'. Buka URL di browser dulu untuk authorize.','error');
+        }
+    };
+    x.send(JSON.stringify(stripCloud(D)));
+}
 
-        <!-- About Section -->
-        <section id="tentang" class="py-24 bg-dark relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-full h-full"><div class="absolute top-1/2 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -translate-y-1/2"></div></div>
-            <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div class="reveal">
-                        <h2 id="aboutTitle" class="font-display text-3xl md:text-5xl font-bold text-cream mb-6">Mengapa Memilih JP Creative?</h2>
-                        <div id="aboutContent" class="text-cream/80 leading-relaxed space-y-4"></div>
-                    </div>
-                    <div class="reveal" style="transition-delay: 0.2s;">
-                        <div class="glass-card rounded-3xl p-8">
-                            <h3 class="font-display text-2xl font-bold gold-gradient mb-6">Keunggulan Kami</h3>
-                            <div id="featuresList" class="space-y-4"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+function updateDot(){
+    var el=document.getElementById('cloud-dot');
+    if(!el)return;
+    if(cloudStatus==='sending'){el.className='cloud-dot bg-yellow-400 spin';el.title='Mengirim ke cloud...'}
+    else if(cloudStatus==='ok'){el.className='cloud-dot bg-green-500';el.title='Cloud: OK'}
+    else if(cloudStatus==='fail'){el.className='cloud-dot bg-red-500';el.title='Cloud: GAGAL'}
+    else{el.className='cloud-dot bg-gray-400';el.title='Cloud: belum diatur'}
+}
 
-        <!-- Packages Section -->
-        <section id="paket" class="py-24 bg-gradient-to-b from-dark to-primary relative">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-16 reveal">
-                    <h2 class="font-display text-3xl md:text-5xl font-bold text-cream mb-4">Paket Penerbitan</h2>
-                    <p class="text-cream/70 max-w-2xl mx-auto">Pilih paket yang sesuai dengan kebutuhan dan anggaran Anda</p>
-                </div>
-                <div id="packagesGrid" class="grid md:grid-cols-3 gap-8"></div>
-            </div>
-        </section>
+/* Sync dari cloud */
+function syncFromCloud(){
+    var url=getSU();
+    if(!url){toast('URL belum diatur. Klik "Atur URL" dulu.','error');return}
+    toast('Mengunduh dari cloud...','info');
+    cloudStatus='sending';updateDot();
+    var x=new XMLHttpRequest();
+    x.open('GET',url,true);
+    x.timeout=15000;
+    x.ontimeout=function(){cloudStatus='fail';updateDot();toast('Timeout.','error')};
+    x.onerror=function(){cloudStatus='fail';updateDot();toast('Gagal. Periksa URL & koneksi.','error')};
+    x.onload=function(){
+        try{
+            var cloud=JSON.parse(x.responseText);
+            if(cloud&&cloud.hero){
+                var local=JSON.parse(localStorage.getItem('jpc_data')||'{}');
+                D=mergeLocal(cloud,local);
+                saveLocal();
+                cloudStatus='ok';updateDot();
+                render();
+                toast('Sinkronisasi dari cloud berhasil!','success');
+            }else{cloudStatus='fail';updateDot();toast('Data cloud kosong. Normal untuk pertama kali.','info')}
+        }catch(e){cloudStatus='fail';updateDot();toast('Parse error: '+e.message,'error')}
+    };
+    x.send();
+}
 
-        <!-- Contact Section -->
-        <section id="kontak" class="py-24 bg-primary relative overflow-hidden">
-            <div class="absolute inset-0"><div class="absolute bottom-0 right-0 w-1/2 h-full bg-gradient-to-l from-accent/5 to-transparent"></div></div>
-            <div class="max-w-7xl mx-auto px-6 relative z-10">
-                <div class="grid lg:grid-cols-2 gap-12">
-                    <div class="reveal">
-                        <h2 class="font-display text-3xl md:text-5xl font-bold text-cream mb-6">Hubungi Kami</h2>
-                        <p class="text-cream/70 mb-8">Siap menerbitkan buku impian Anda? Hubungi kami sekarang untuk konsultasi gratis!</p>
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div>
-                                <div><div class="text-cream/60 text-sm">Telepon</div><div id="contactPhone" class="text-cream font-semibold"></div></div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
-                                <div><div class="text-cream/60 text-sm">Email</div><div id="contactEmail" class="text-cream font-semibold"></div></div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
-                                <div><div class="text-cream/60 text-sm">Alamat</div><div id="contactAddress" class="text-cream font-semibold"></div></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="reveal" style="transition-delay: 0.2s;">
-                        <form class="glass-card rounded-3xl p-8">
-                            <div class="space-y-6">
-                                <div><label class="block text-cream/80 mb-2 text-sm">Nama Lengkap</label><input type="text" class="w-full px-4 py-3 rounded-xl input-style" placeholder="Masukkan nama Anda"></div>
-                                <div><label class="block text-cream/80 mb-2 text-sm">Email</label><input type="email" class="w-full px-4 py-3 rounded-xl input-style" placeholder="Masukkan email Anda"></div>
-                                <div><label class="block text-cream/80 mb-2 text-sm">Pesan</label><textarea rows="4" class="w-full px-4 py-3 rounded-xl input-style resize-none" placeholder="Tulis pesan Anda"></textarea></div>
-                                <button type="submit" class="w-full btn-gold py-4 rounded-xl font-semibold text-primary hover:shadow-lg hover:shadow-accent/30 transition-all">Kirim Pesan</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
+/* Kirim manual ke cloud */
+function pushCloud(){
+    var url=getSU();
+    if(!url){toast('URL belum diatur.','error');return}
+    toast('Mengirim ke cloud...','info');
+    cloudStatus='sending';updateDot();
+    var x=new XMLHttpRequest();
+    x.open('POST',url,true);
+    x.setRequestHeader('Content-Type','application/json');
+    x.timeout=15000;
+    x.ontimeout=function(){cloudStatus='fail';updateDot();toast('Timeout.','error')};
+    x.onerror=function(){cloudStatus='fail';updateDot();toast('Gagal kirim.','error')};
+    x.onload=function(){
+        if(x.status>=200&&x.status<300){cloudStatus='ok';updateDot();toast('Berhasil dikirim ke cloud!','success')}
+        else{cloudStatus='fail';updateDot();toast('Error HTTP '+x.status+'. Buka URL di browser dulu!','error')}
+    };
+    x.send(JSON.stringify(stripCloud(D)));
+}
 
-        <!-- Footer -->
-        <footer class="bg-dark py-12 border-t border-accent/10">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div class="flex items-center gap-3">
-                        <img id="footerLogo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 100 100'%3E%3Crect fill='%23c9a227' rx='10' width='100' height='100'/%3E%3Ctext x='50' y='65' font-family='serif' font-size='40' font-weight='bold' fill='%231a1a2e' text-anchor='middle'%3EJP%3C/text%3E%3C/svg%3E" alt="Logo" class="h-10 w-auto">
-                        <span class="font-display text-xl font-bold gold-gradient">JP Creative</span>
-                    </div>
-                    <p class="text-cream/50 text-sm">2024 JP Creative. All rights reserved.</p>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <!-- ADMIN DASHBOARD -->
-    <div id="adminPanel" class="hidden min-h-screen">
-        <div class="flex">
-            <!-- Sidebar -->
-            <aside class="admin-sidebar w-64 min-h-screen fixed left-0 top-0 border-r border-accent/10">
-                <div class="p-6 border-b border-accent/10"><h2 class="font-display text-xl font-bold gold-gradient">JP Creative Admin</h2></div>
-                <nav class="p-4">
-                    <ul class="space-y-2">
-                        <li><button onclick="showAdminSection('pages')" id="tabPages" class="w-full text-left px-4 py-3 rounded-lg text-cream/80 hover:text-cream hover:bg-accent/10 transition-all tab-active">Halaman & Narasi</button></li>
-                        <li><button onclick="showAdminSection('menu')" id="tabMenu" class="w-full text-left px-4 py-3 rounded-lg text-cream/80 hover:text-cream hover:bg-accent/10 transition-all">Menu & Link</button></li>
-                        <li><button onclick="showAdminSection('services')" id="tabServices" class="w-full text-left px-4 py-3 rounded-lg text-cream/80 hover:text-cream hover:bg-accent/10 transition-all">Layanan</button></li>
-                        <li><button onclick="showAdminSection('packages')" id="tabPackages" class="w-full text-left px-4 py-3 rounded-lg text-cream/80 hover:text-cream hover:bg-accent/10 transition-all">Paket Penerbitan</button></li>
-                        <li><button onclick="showAdminSection('media')" id="tabMedia" class="w-full text-left px-4 py-3 rounded-lg text-cream/80 hover:text-cream hover:bg-accent/10 transition-all">Media & Gambar</button></li>
-                        <li><button onclick="showAdminSection('contact')" id="tabContact" class="w-full text-left px-4 py-3 rounded-lg text-cream/80 hover:text-cream hover:bg-accent/10 transition-all">Kontak</button></li>
-                    </ul>
-                </nav>
-            </aside>
-
-            <!-- Main Content -->
-            <main class="ml-64 flex-1 p-8 min-h-screen bg-gradient-to-br from-primary to-dark">
-                <!-- Pages Section -->
-                <section id="sectionPages" class="admin-section">
-                    <div class="flex justify-between items-center mb-8">
-                        <div><h1 class="font-display text-3xl font-bold text-cream">Halaman & Narasi</h1><p class="text-cream/60 mt-1">Kelola konten halaman landing page</p></div>
-                        <button onclick="openPageModal()" class="btn-gold px-6 py-3 rounded-xl font-semibold text-primary hover:shadow-lg transition-all flex items-center gap-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                            Tambah
-                        </button>
-                    </div>
-                    <div class="admin-card rounded-2xl overflow-hidden">
-                        <div class="p-6 border-b border-accent/10"><span class="text-cream/60 text-sm">Daftar Halaman</span></div>
-                        <div id="pagesList" class="divide-y divide-accent/10"></div>
-                    </div>
-                </section>
-
-                <!-- Menu Section -->
-                <section id="sectionMenu" class="admin-section hidden">
-                    <div class="flex justify-between items-center mb-8">
-                        <div><h1 class="font-display text-3xl font-bold text-cream">Menu & Link</h1><p class="text-cream/60 mt-1">Kelola menu navigasi website</p></div>
-                        <button onclick="openMenuModal()" class="btn-gold px-6 py-3 rounded-xl font-semibold text-primary hover:shadow-lg transition-all flex items-center gap-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                            Tambah Menu
-                        </button>
-                    </div>
-                    <div class="admin-card rounded-2xl overflow-hidden"><div id="menuList" class="divide-y divide-accent/10"></div></div>
-                </section>
-
-                <!-- Services Section -->
-                <section id="sectionServices" class="admin-section hidden">
-                    <div class="flex justify-between items-center mb-8">
-                        <div><h1 class="font-display text-3xl font-bold text-cream">Layanan</h1><p class="text-cream/60 mt-1">Kelola daftar layanan</p></div>
-                        <button onclick="openServiceModal()" class="btn-gold px-6 py-3 rounded-xl font-semibold text-primary hover:shadow-lg transition-all flex items-center gap-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                            Tambah Layanan
-                        </button>
-                    </div>
-                    <div id="servicesList" class="grid md:grid-cols-2 gap-4"></div>
-                </section>
-
-                <!-- Packages Section -->
-                <section id="sectionPackages" class="admin-section hidden">
-                    <div class="flex justify-between items-center mb-8">
-                        <div><h1 class="font-display text-3xl font-bold text-cream">Paket Penerbitan</h1><p class="text-cream/60 mt-1">Kelola paket dan harga</p></div>
-                        <button onclick="openPackageModal()" class="btn-gold px-6 py-3 rounded-xl font-semibold text-primary hover:shadow-lg transition-all flex items-center gap-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                            Tambah Paket
-                        </button>
-                    </div>
-                    <div id="packagesList" class="grid md:grid-cols-3 gap-6"></div>
-                </section>
-
-                <!-- Media Section -->
-                <section id="sectionMedia" class="admin-section hidden">
-                    <div class="mb-8"><h1 class="font-display text-3xl font-bold text-cream">Media & Gambar</h1><p class="text-cream/60 mt-1">Upload logo dan background</p></div>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <!-- Logo Upload -->
-                        <div class="admin-card rounded-2xl p-6">
-                            <h3 class="font-semibold text-cream mb-4">Logo Website</h3>
-                            <div id="logoPreview" class="mb-4 p-4 bg-dark/50 rounded-xl flex items-center justify-center min-h-[120px]">
-                                <img id="adminLogoPreview" src="" alt="Logo Preview" class="max-h-20 w-auto">
-                            </div>
-                            <label class="upload-zone rounded-xl p-6 flex flex-col items-center justify-center cursor-pointer">
-                                <svg class="w-10 h-10 text-accent/60 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                                <span class="text-cream/60 text-sm">Klik untuk upload logo</span>
-                                <input type="file" accept="image/*" onchange="handleLogoUpload(event)" class="hidden">
-                            </label>
-                        </div>
-                        <!-- Background Upload -->
-                        <div class="admin-card rounded-2xl p-6">
-                            <h3 class="font-semibold text-cream mb-4">Background Hero</h3>
-                            <div id="bgPreview" class="mb-4 rounded-xl overflow-hidden min-h-[120px] bg-dark/50">
-                                <img id="adminBgPreview" src="" alt="BG Preview" class="w-full h-full object-cover">
-                            </div>
-                            <label class="upload-zone rounded-xl p-6 flex flex-col items-center justify-center cursor-pointer">
-                                <svg class="w-10 h-10 text-accent/60 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                                <span class="text-cream/60 text-sm">Klik untuk upload background</span>
-                                <input type="file" accept="image/*" onchange="handleBgUpload(event)" class="hidden">
-                            </label>
-                        </div>
-                    </div>
-                    <!-- Hero Text Editor -->
-                    <div class="admin-card rounded-2xl p-6 mt-6">
-                        <h3 class="font-semibold text-cream mb-4">Teks Hero Section</h3>
-                        <div class="space-y-4">
-                            <div><label class="block text-cream/80 mb-2 text-sm">Judul Hero</label><input type="text" id="heroTitleInput" class="w-full px-4 py-3 rounded-xl input-style" placeholder="Judul utama..."></div>
-                            <div><label class="block text-cream/80 mb-2 text-sm">Subjudul Hero</label><textarea id="heroSubtitleInput" rows="3" class="w-full px-4 py-3 rounded-xl input-style resize-none" placeholder="Deskripsi singkat..."></textarea></div>
-                            <button onclick="saveHeroText()" class="btn-gold px-6 py-3 rounded-xl font-semibold text-primary">Simpan Perubahan</button>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Contact Section -->
-                <section id="sectionContact" class="admin-section hidden">
-                    <div class="mb-8"><h1 class="font-display text-3xl font-bold text-cream">Informasi Kontak</h1><p class="text-cream/60 mt-1">Kelola informasi kontak</p></div>
-                    <div class="admin-card rounded-2xl p-6">
-                        <div class="space-y-6">
-                            <div><label class="block text-cream/80 mb-2 text-sm">Nomor Telepon</label><input type="text" id="phoneInput" class="w-full px-4 py-3 rounded-xl input-style" placeholder="+62 xxx-xxxx-xxxx"></div>
-                            <div><label class="block text-cream/80 mb-2 text-sm">Email</label><input type="email" id="emailInput" class="w-full px-4 py-3 rounded-xl input-style" placeholder="email@example.com"></div>
-                            <div><label class="block text-cream/80 mb-2 text-sm">Alamat</label><textarea id="addressInput" rows="2" class="w-full px-4 py-3 rounded-xl input-style resize-none" placeholder="Alamat lengkap..."></textarea></div>
-                            <button onclick="saveContact()" class="btn-gold px-6 py-3 rounded-xl font-semibold text-primary">Simpan Kontak</button>
-                        </div>
-                    </div>
-                </section>
-            </main>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div id="modal" class="fixed inset-0 z-[200] hidden items-center justify-center p-4">
-        <div class="absolute inset-0 bg-dark/90 backdrop-blur-sm" onclick="closeModal()"></div>
-        <div class="relative admin-card rounded-2xl p-8 max-w-lg w-full max-h-[90vh] overflow-y-auto">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-cream/60 hover:text-cream"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
-            <div id="modalContent"></div>
-        </div>
-    </div>
-
-    <script>
-        // ==================== KONFIGURASI API ====================
-        // PENTING: Ganti URL ini dengan URL Web App dari Google Apps Script Anda
-        const API_URL = '1z14cletlobArxCJ118LN1hv_eFlg40pYHL0aoWtC504';
-
-        // ==================== DATA STORE ====================
-        let siteData = {
-            logo: '',
-            background: '',
-            heroTitle: 'Wujudkan Karya Tulismu\nBersama JP Creative',
-            heroSubtitle: 'Layanan penerbitan profesional yang membantu Anda dari naskah hingga distribusi. Terbitkan buku impian Anda dengan mudah dan terjangkau.',
-            contact: { phone: '+62 812-3456-7890', email: 'info@jpcreative.id', address: 'Jakarta, Indonesia' },
-            menu: [
-                { id: 1, title: 'Ghostwriter', link: '#layanan', active: true },
-                { id: 2, title: 'Pelatihan Menulis', link: '#layanan', active: true },
-                { id: 3, title: 'Terbit Murah mulai 50K', link: '#paket', active: true },
-                { id: 4, title: 'Paket Penerbitan', link: '#paket', active: true }
-            ],
-            services: [
-                { id: 1, title: 'Ghostwriter Profesional', description: 'Jasa penulisan buku oleh penulis berpengalaman untuk mewujudkan ide Anda menjadi karya nyata.', icon: 'pen', active: true },
-                { id: 2, title: 'Pelatihan Menulis', description: 'Kursus dan workshop menulis kreatif untuk mengasah kemampuan menulis Anda.', icon: 'book', active: true },
-                { id: 3, title: 'Terbit Murah', description: 'Paket penerbitan terjangkau mulai dari Rp 50.000 untuk menerbitkan buku impian Anda.', icon: 'rocket', active: true },
-                { id: 4, title: 'Distribusi Buku', description: 'Distribusi buku ke berbagai platform online dan toko buku di seluruh Indonesia.', icon: 'truck', active: true }
-            ],
-            packages: [
-                { id: 1, name: 'Paket Basic', price: 'Rp 50.000', features: ['Edit naskah dasar', 'Desain cover simple', 'ISBN', 'E-book'], popular: false, active: true },
-                { id: 2, name: 'Paket Professional', price: 'Rp 250.000', features: ['Edit naskah lengkap', 'Desain cover premium', 'ISBN & Hak Cipta', 'Cetak 50 eksemplar', 'Distribusi online'], popular: true, active: true },
-                { id: 3, name: 'Paket Ultimate', price: 'Rp 500.000', features: ['Ghostwriter support', 'Edit naskah premium', 'Desain cover eksklusif', 'Cetak 100 eksemplar', 'Distribusi nasional', 'Marketing kit'], popular: false, active: true }
-            ],
-            pages: [
-                { id: 1, title: 'Mengapa Memilih JP Creative?', slug: 'tentang', content: 'JP Creative adalah penerbit profesional dengan pengalaman lebih dari 5 tahun dalam industri perbukuan. Kami berkomitmen untuk membantu setiap penulis mewujudkan impian mereka menerbitkan buku berkualitas.', active: true }
-            ],
-            features: ['Tim editor berpengalaman', 'Proses penerbitan cepat', 'Harga terjangkau', 'Distribusi luas', 'Konsultasi gratis']
+/* Atur URL via prompt */
+function aturURL(){
+    var cur=getSU();
+    var val=prompt(cur?'URL saat ini:\n'+cur+'\n\nMasukkan URL baru (kosongkan = hapus):':'Masukkan Google Script URL:\n\nContoh:\nhttps://script.google.com/macros/s/XXXXX/exec',cur);
+    if(val===null)return;
+    val=val.trim();
+    setSU(val);
+    if(val){
+        toast('URL disimpan. Menguji...','info');
+        var x=new XMLHttpRequest();
+        x.open('GET',val,true);x.timeout=10000;
+        x.ontimeout=function(){cloudStatus='fail';updateDot();toast('Timeout. URL mungkin salah.','error')};
+        x.onerror=function(){cloudStatus='fail';updateDot();toast('Koneksi gagal! Pastikan:\n1. URL benar (pakai /exec di akhir)\n2. Script sudah di-deploy\n3. Access = Anyone','error')};
+        x.onload=function(){
+            try{JSON.parse(x.responseText);cloudStatus='ok';updateDot();toast('URL tersimpan & koneksi OK!','success')}
+            catch(e){cloudStatus='fail';updateDot();toast('Koneksi OK tapi data kosong. Normal.','info')}
         };
+        x.send();
+    }else{cloudStatus='idle';updateDot();toast('URL dihapus. Kembali ke lokal.','info')}
+    render();
+}
 
-        // ==================== API FUNCTIONS ====================
-        async function fetchSiteData() {
-            if (!API_URL || API_URL === 'MASUKKAN_URL_WEB_APP_ANDA_DISINI') {
-                alert('PERINGATAN: Anda belum mengisi API_URL. Silakan baca komentar di bagian atas script.');
-                document.getElementById('loadingOverlay').innerHTML = '<p class="text-red-500 text-center p-8">Error: API URL belum dikonfigurasi.<br>Silakan edit kode dan masukkan URL Web App Anda.</p>';
-                return false;
-            }
-            try {
-                const response = await fetch(API_URL);
-                const data = await response.json();
-                if (data.error) throw new Error(data.error);
-                
-                // Merge dengan data default jika ada yang kosong
-                siteData = { ...siteData, ...data };
-                return true;
-            } catch (error) {
-                console.error('Gagal memuat data:', error);
-                alert('Gagal terhubung ke server. Pastikan URL Web App sudah benar dan di-deploy dengan benar.');
-                return false;
-            } finally {
-                document.getElementById('loadingOverlay').style.display = 'none';
-                document.getElementById('viewToggle').classList.remove('hidden');
-            }
-        }
+function resetAll(){if(confirm('Reset semua data ke default?')){localStorage.removeItem('jpc_data');D=load();save();render()}}
+function exportData(){var b=new Blob([JSON.stringify(D,null,2)],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='jpcreative-'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('Diekspor!','success')}
+function importData(inp){if(!inp.files||!inp.files[0])return;var r=new FileReader();r.onload=function(e){try{var d=JSON.parse(e.target.result);if(d.hero&&d.menus){D=d;save();render();toast('Diimpor!','success')}else toast('Format tidak valid.','error')}catch(err){toast('Gagal.','error')}};r.readAsText(inp.files[0])}
 
-        async function saveToServer() {
-            try {
-                document.getElementById('loadingOverlay').style.display = 'flex';
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    mode: 'no-cors', // Google Apps Script memerlukan no-cors untuk POST
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ data: siteData })
-                });
-                // Karena no-cors, kita tidak bisa membaca response, asumsikan sukses
-                alert('Data berhasil disimpan ke server!');
-            } catch (error) {
-                console.error('Gagal menyimpan:', error);
-                alert('Gagal menyimpan data.');
-            } finally {
-                document.getElementById('loadingOverlay').style.display = 'none';
-            }
-        }
+/* ========== TOAST ========== */
+function toast(msg,type){
+    type=type||'success';var c=document.getElementById('toast-box'),t=document.createElement('div');
+    var bg=type==='success'?'bg-green-600':type==='error'?'bg-red-600':'bg-blue-600';
+    var ic=type==='success'?'lucide:check-circle':type==='error'?'lucide:x-circle':'lucide:info';
+    t.className=bg+' text-white px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3 transform translate-x-[120%] transition-transform duration-300 max-w-sm';
+    t.innerHTML='<span class="iconify flex-shrink-0" data-icon="'+ic+'" data-width="20"></span><span class="text-sm font-medium">'+msg+'</span>';
+    c.appendChild(t);requestAnimationFrame(function(){t.classList.remove('translate-x-[120%]');t.classList.add('translate-x-0')});
+    setTimeout(function(){t.classList.add('translate-x-[120%]');setTimeout(function(){t.remove()},300)},5000);
+}
 
-        async function uploadImageToServer(file) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = async (e) => {
-                    try {
-                        document.getElementById('loadingOverlay').style.display = 'flex';
-                        const base64 = e.target.result.split(',')[1];
-                        const mimeType = file.type;
-                        
-                        // Gunakan fetch dengan no-cors tidak bisa mengembalikan data.
-                        // Karena kita butuh URL balikannya, kita harus pakai mode cors (default).
-                        // Pastikan di Apps Script sudah return JSON yang benar.
-                        
-                        const response = await fetch(API_URL, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                action: 'uploadImage',
-                                fileName: file.name,
-                                mimeType: mimeType,
-                                base64: base64
-                            })
-                        });
-                        const result = await response.json();
-                        
-                        if (result.success) {
-                            resolve(result.url);
-                        } else {
-                            reject(new Error('Gagal upload gambar'));
-                        }
-                    } catch (err) {
-                        reject(err);
-                    } finally {
-                        document.getElementById('loadingOverlay').style.display = 'none';
-                    }
-                };
-                reader.readAsDataURL(file);
-            });
-        }
+/* ========== IMAGE ========== */
+function resizeImg(file,mw,cb){var r=new FileReader();r.onload=function(e){var img=new Image();img.onload=function(){var cv=document.createElement('canvas');var w=img.width,h=img.height;if(w>mw){h=Math.round(h*mw/w);w=mw}cv.width=w;cv.height=h;cv.getContext('2d').drawImage(img,0,0,w,h);cb(cv.toDataURL('image/jpeg',0.8))};img.src=e.target.result};r.readAsText(file)}
+function resizeImg(file,mw,cb){var r=new FileReader();r.onload=function(e){var img=new Image();img.onload=function(){var cv=document.createElement('canvas');var w=img.width,h=img.height;if(w>mw){h=Math.round(h*mw/w);w=mw}cv.width=w;cv.height=h;cv.getContext('2d').drawImage(img,0,0,w,h);cb(cv.toDataURL('image/jpeg',0.8))};img.src=e.target.result};r.readAsDataURL(file)}
 
-        // ==================== ICON LIBRARY ====================
-        const icons = {
-            pen: '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>',
-            book: '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>',
-            rocket: '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>',
-            truck: '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>',
-            check: '<svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>'
-        };
+/* ========== IMAGE DUAL TAB ========== */
+function imgComp(pre,cur){
+    var il=isB64(cur),esc=il?'':(cur||'');
+    return '<div><label class="block text-sm font-medium text-gray-700 mb-1.5">Sumber Gambar</label><div class="flex gap-2 mb-3"><button type="button" onclick="imgTab(\''+pre+'\',\'u\')" id="'+pre+'-tu" class="itab on flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-xl border border-purple-300"><span class="iconify" data-icon="lucide:upload" data-width="15"></span>Upload</button><button type="button" onclick="imgTab(\''+pre+'\',\'l\')" id="'+pre+'-tl" class="itab flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-xl border border-gray-200 text-gray-500 hover:bg-gray-50"><span class="iconify" data-icon="lucide:link" data-width="15"></span>Link URL</button></div><div id="'+pre+'-pu" class="pane-in"><div class="flex items-start gap-4"><div class="w-24 h-24 rounded-xl '+(cur?'border border-gray-200':'bg-gray-100 border-2 border-dashed border-gray-300')+' flex items-center justify-center overflow-hidden flex-shrink-0">'+(cur?'<img src="'+cur+'" class="w-full h-full object-cover">':'<span class="iconify text-gray-400" data-icon="lucide:image-plus" data-width="28"></span>')+'</div><div><input type="file" id="'+pre+'-f" accept="image/*" class="hidden" onchange="document.getElementById(\''+pre+'-fn\').textContent=this.files[0]?this.files[0].name:\'Pilih file...\'"><button type="button" onclick="document.getElementById(\''+pre+'-f\').click()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium rounded-xl">Pilih File</button><p id="'+pre+'-fn" class="text-xs text-gray-400 mt-1.5">Maks 5MB</p></div></div></div><div id="'+pre+'-pl" class="hidden"><div class="flex items-start gap-4"><div id="'+pre+'-pv" class="w-24 h-24 rounded-xl '+(cur&&!il?'border border-gray-200':'bg-gray-100 border-2 border-dashed border-gray-300')+' flex items-center justify-center overflow-hidden flex-shrink-0">'+(cur&&!il?'<img src="'+esc+'" class="w-full h-full object-cover">':'<span class="iconify text-gray-400" data-icon="lucide:image" data-width="28"></span>')+'</div><div class="flex-1"><input type="url" id="'+pre+'-lk" value="'+esc+'" placeholder="https://example.com/gambar.jpg" class="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-500" oninput="imgPrv(\''+pre+'\',this.value)"><p class="text-xs text-gray-400 mt-1.5">Paste link gambar</p><div class="p-2.5 bg-blue-50 rounded-xl mt-2"><p class="text-xs text-blue-600">Google Drive: <code class="bg-blue-100 px-1 rounded text-[11px]">https://lh3.googleusercontent.com/d/FILE_ID=s0</code></p></div></div></div></div>'+(cur?'<div class="mt-2 flex items-center gap-2"><span class="w-2 h-2 rounded-full '+(il?'bg-orange-400':'bg-green-400')+'"></span><span class="text-xs '+(il?'text-orange-600':'text-green-600')+'">'+(il?'Lokal (tidak ke cloud)':'URL (ikut ke cloud ✓)')+'</span></div>':'')+'</div>';
+}
+function imgTab(pre,t){var pu=document.getElementById(pre+'-pu'),pl=document.getElementById(pre+'-pl'),tu=document.getElementById(pre+'-tu'),tl=document.getElementById(pre+'-tl');if(!pu)return;if(t==='u'){pu.classList.remove('hidden');pl.classList.add('hidden');tu.className='itab on flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-xl border border-purple-300';tl.className='itab flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-xl border border-gray-200 text-gray-500 hover:bg-gray-50'}else{pl.classList.remove('hidden');pu.classList.add('hidden');tl.className='itab on flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-xl border border-purple-300';tu.className='itab flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-xl border border-gray-200 text-gray-500 hover:bg-gray-50'}}
+function imgPrv(pre,u){var pv=document.getElementById(pre+'-pv');if(!pv)return;if(u.trim()){pv.innerHTML='<img src="'+u.trim()+'" class="w-full h-full object-cover" onerror="this.outerHTML=\'<span class=iconify text-red-400 data-icon=lucide:image-off data-width=28></span>\'">';pv.className='w-24 h-24 rounded-xl border border-gray-200 flex items-center justify-center overflow-hidden flex-shrink-0'}else{pv.innerHTML='<span class="iconify text-gray-400" data-icon="lucide:image" data-width="28"></span>';pv.className='w-24 h-24 rounded-xl bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center overflow-hidden flex-shrink-0'}if(window.Iconify)setTimeout(function(){Iconify.scan()},50)}
+function imgGet(pre){var pu=document.getElementById(pre+'-pu');if(!pu)return'';if(pu.classList.contains('hidden')){var el=document.getElementById(pre+'-lk');return el?el.value.trim():''}else{var fi=document.getElementById(pre+'-f');return fi&&fi.files&&fi.files[0]?'__FILE__':''}}
+function imgDo(pre,mw,cb){var s=imgGet(pre);if(s==='__FILE__'){var fi=document.getElementById(pre+'-f');if(fi.files[0].size>5*1024*1024){toast('File terlalu besar','error');return}resizeImg(fi.files[0],mw,cb)}else{cb(s)}}
 
-        // ==================== VIEW SWITCHING ====================
-        function showLanding() {
-            document.getElementById('landingPage').classList.remove('hidden');
-            document.getElementById('adminPanel').classList.add('hidden');
-            document.getElementById('btnLanding').classList.add('bg-accent', 'text-primary');
-            document.getElementById('btnLanding').classList.remove('bg-primary/80', 'text-cream', 'border', 'border-accent/30');
-            document.getElementById('btnAdmin').classList.remove('bg-accent', 'text-primary');
-            document.getElementById('btnAdmin').classList.add('bg-primary/80', 'text-cream', 'border', 'border-accent/30');
-            renderLanding();
-        }
+/* ========== AUTH ========== */
+function showPwd(){document.getElementById('pwd-modal').classList.remove('hidden');document.getElementById('pwd-input').value='';document.getElementById('pwd-err').classList.add('hidden');document.getElementById('pwd-card').classList.remove('pwd-shake');setTimeout(function(){document.getElementById('pwd-input').focus()},150)}
+function closePwd(){document.getElementById('pwd-modal').classList.add('hidden')}
+function checkPwd(){if(document.getElementById('pwd-input').value==='jp@dm1n'){closePwd();sessionStorage.setItem('jpc_auth','1');go('#admin')}else{document.getElementById('pwd-err').classList.remove('hidden');var c=document.getElementById('pwd-card');c.classList.remove('pwd-shake');void c.offsetWidth;c.classList.add('pwd-shake');document.getElementById('pwd-input').value='';document.getElementById('pwd-input').focus()}}
+function tryAdmin(){if(sessionStorage.getItem('jpc_auth')==='1')go('#admin');else showPwd()}
+function go(h){window.location.hash=h}
+function view(){return window.location.hash==='#admin'?'admin':'landing'}
+function render(){var a=document.getElementById('app');view()==='admin'?renderAdmin(a):renderLanding(a);if(window.Iconify)setTimeout(function(){Iconify.scan()},50)}
 
-        function showAdmin() {
-            document.getElementById('landingPage').classList.add('hidden');
-            document.getElementById('adminPanel').classList.remove('hidden');
-            document.getElementById('btnAdmin').classList.add('bg-accent', 'text-primary');
-            document.getElementById('btnAdmin').classList.remove('bg-primary/80', 'text-cream', 'border', 'border-accent/30');
-            document.getElementById('btnLanding').classList.remove('bg-accent', 'text-primary');
-            document.getElementById('btnLanding').classList.add('bg-primary/80', 'text-cream', 'border', 'border-accent/30');
-            renderAdmin();
-        }
+/* ========== LANDING ========== */
+function renderLanding(c){
+    var d=D;
+    c.innerHTML=
+    '<nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10"><div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between"><a href="#" class="flex items-center gap-3"><img src="'+LOGO_URL+'" alt="Logo" class="h-10 w-auto object-contain" onerror="imgFallback(this,LOGO_FB,0)"></a><div class="hidden md:flex items-center gap-8">'+d.menus.map(function(m){return '<a href="'+m.link+'" class="text-sm font-medium text-neutral-400 hover:text-white transition-colors">'+m.text+'</a>'}).join('')+'</div><div class="flex items-center gap-4"><a href="'+d.hero.ctaLink+'" class="hidden md:inline-flex items-center gap-2 bg-white text-neutral-950 text-sm font-medium px-5 py-2 rounded-full hover:bg-neutral-200 hover:scale-105 transition-all">'+d.hero.ctaText+' <span class="iconify" data-icon="lucide:arrow-right" data-width="16"></span></a><button onclick="document.getElementById(\'mm\').classList.toggle(\'hidden\')" class="md:hidden"><span class="iconify" data-icon="lucide:menu" data-width="24"></span></button></div></div><div id="mm" class="hidden md:hidden border-t border-white/10 bg-neutral-900/95 backdrop-blur-xl"><div class="px-6 py-4 flex flex-col gap-3">'+d.menus.map(function(m){return '<a href="'+m.link+'" onclick="this.closest(\'#mm\').classList.add(\'hidden\')" class="text-sm font-medium text-neutral-400 hover:text-white py-2">'+m.text+'</a>'}).join('')+'<a href="'+d.hero.ctaLink+'" onclick="this.closest(\'#mm\').classList.add(\'hidden\')" class="inline-flex items-center justify-center bg-white text-neutral-950 text-sm font-medium px-5 py-2.5 rounded-full mt-2">'+d.hero.ctaText+'</a></div></div></nav>'+
+    '<section class="relative min-h-screen flex items-center justify-center overflow-hidden hero-grad"><img src="'+BG_URL+'" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="imgFallback(this,BG_FB,0)"><div class="hero-ov absolute inset-0"></div><div class="relative z-10 max-w-4xl mx-auto px-6 text-center pt-20"><div class="inline-flex items-center gap-2 bg-white/10 border border-white/10 rounded-full px-4 py-1.5 mb-8 anim-up"><span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span><span class="text-xs font-medium text-neutral-300">Menerima Naskah Baru</span></div><h1 class="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.1] mb-6 anim-up d1">'+d.hero.title+'</h1><p class="text-base md:text-lg text-neutral-400 font-light leading-relaxed max-w-2xl mx-auto mb-10 anim-up d2">'+d.hero.subtitle+'</p><div class="flex flex-col sm:flex-row items-center justify-center gap-4 anim-up d3"><a href="'+d.hero.ctaLink+'" class="inline-flex items-center gap-2 bg-white text-neutral-950 text-sm font-medium px-8 py-3.5 rounded-full hover:bg-neutral-200 hover:scale-105 transition-all">'+d.hero.ctaText+' <span class="iconify" data-icon="lucide:arrow-right" data-width="16"></span></a><a href="'+(d.menus[0]?d.menus[0].link:'#')+'" class="inline-flex items-center gap-2 border border-white/20 text-white text-sm font-medium px-8 py-3.5 rounded-full hover:bg-white/10 transition-all">Pelajari Lebih Lanjut</a></div><div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"><span class="iconify text-neutral-500" data-icon="lucide:chevron-down" data-width="24"></span></div></div></section>'+
+    d.pages.filter(function(p){return p.show}).map(function(p){return '<section id="page-'+p.id+'" class="py-24 px-6"><div class="max-w-7xl mx-auto '+(p.image?'grid md:grid-cols-2 gap-16 items-center':'')+'"><div class="'+(p.image?'':'max-w-3xl mx-auto text-center')+'"><h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-6">'+p.title+'</h2><div class="text-neutral-400 font-light leading-relaxed text-lg whitespace-pre-line">'+p.content+'</div></div>'+(p.image?'<div class="relative"><img src="'+p.image+'" alt="" class="rounded-2xl w-full object-cover aspect-[4/3]" onerror="this.parentElement.style.display=\'none\'"><div class="absolute -inset-1 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-2xl blur-xl -z-10"></div></div>':'')+'</div></section>'}).join('')+
+    '<section id="services" class="py-24 px-6 bg-[#0d0d0d]"><div class="max-w-7xl mx-auto"><div class="text-center mb-16"><span class="text-xs font-medium tracking-widest uppercase text-purple-400 mb-4 block">Layanan Kami</span><h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Solusi Penerbitan Lengkap</h2></div><div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">'+d.services.map(function(s){return '<div id="'+s.id+'" class="group bg-neutral-900/50 border border-white/10 rounded-2xl p-8 hover:border-purple-500/50 transition-all duration-500 hover:-translate-y-2"><div class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"><span class="iconify text-purple-400" data-icon="'+s.icon+'" data-width="24"></span></div><h3 class="text-xl font-medium mb-3">'+s.title+'</h3><p class="text-neutral-400 text-sm font-light leading-relaxed mb-5">'+s.description+'</p><ul class="space-y-2">'+s.features.map(function(f){return '<li class="flex items-center gap-2 text-sm text-neutral-500"><span class="iconify text-purple-400" data-icon="lucide:check" data-width="14"></span>'+f+'</li>'}).join('')+'</ul></div>'}).join('')+'</div></div></section>'+
+    '<section id="packages" class="py-24 px-6"><div class="max-w-7xl mx-auto"><div class="text-center mb-16"><span class="text-xs font-medium tracking-widest uppercase text-purple-400 mb-4 block">Paket Harga</span><h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Pilih Paket Terbaikmu</h2></div><div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">'+d.packages.map(function(p){return '<div class="relative '+(p.highlight?'pricing-hl':'border border-white/10')+' bg-neutral-900/50 rounded-2xl p-8 flex flex-col hover:-translate-y-2 transition-all duration-500">'+(p.highlight?'<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-purple-500 text-white text-xs font-medium px-4 py-1 rounded-full">Populer</div>':'')+'<div class="mb-6"><p class="text-xs text-neutral-500 uppercase tracking-wider mb-1">'+p.priceNote+'</p><p class="text-4xl font-semibold">Rp '+p.price+'</p></div><h3 class="text-xl font-medium mb-2">'+p.name+'</h3><p class="text-sm text-neutral-400 mb-6">'+p.description+'</p><ul class="space-y-3 mb-8 flex-1">'+p.features.map(function(f){return '<li class="flex items-start gap-2 text-sm text-neutral-400"><span class="iconify text-purple-400 mt-0.5 flex-shrink-0" data-icon="lucide:check" data-width="14"></span>'+f+'</li>'}).join('')+'</ul><a href="https://wa.me/6281234567890?text=Halo, tertarik paket '+p.name+'" target="_blank" class="'+(p.highlight?'bg-white text-neutral-950 hover:bg-neutral-200':'bg-white/10 text-white hover:bg-white/20')+' text-sm font-medium px-6 py-3 rounded-full text-center transition-all hover:scale-105">Pilih Paket</a></div>'}).join('')+'</div></div></section>'+
+    '<section class="py-24 px-6"><div class="max-w-4xl mx-auto text-center relative"><div class="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-blue-500/10 to-purple-500/10 rounded-3xl blur-3xl"></div><div class="relative bg-neutral-900/80 border border-white/10 rounded-3xl p-12 md:p-16"><h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-4">Siap Menerbitkan Bukumu?</h2><p class="text-neutral-400 font-light text-lg mb-8 max-w-xl mx-auto">Konsultasikan naskah Anda secara gratis.</p><a href="https://wa.me/6281234567890" target="_blank" class="inline-flex items-center gap-2 bg-white text-neutral-950 text-sm font-medium px-8 py-3.5 rounded-full hover:bg-neutral-200 hover:scale-105 transition-all">Hubungi Kami <span class="iconify" data-icon="lucide:message-circle" data-width="16"></span></a></div></div></section>'+
+    '<footer class="border-t border-white/10 bg-[#050505] py-16 px-6"><div class="max-w-7xl mx-auto"><div class="grid md:grid-cols-4 gap-12 mb-12"><div><img src="'+LOGO_URL+'" alt="" class="h-10 w-auto object-contain mb-4" onerror="imgFallback(this,LOGO_FB,0)"><p class="text-sm text-neutral-500 font-light leading-relaxed">'+d.footer.desc+'</p></div><div><h4 class="text-sm font-medium mb-4">Layanan</h4><ul class="space-y-2">'+d.menus.map(function(m){return '<li><a href="'+m.link+'" class="text-sm text-neutral-500 hover:text-white transition-colors">'+m.text+'</a></li>'}).join('')+'</ul></div><div><h4 class="text-sm font-medium mb-4">Kontak</h4><ul class="space-y-2"><li class="flex items-start gap-2 text-sm text-neutral-500"><span class="iconify mt-0.5" data-icon="lucide:map-pin" data-width="14"></span>'+d.footer.address+'</li><li class="flex items-center gap-2 text-sm text-neutral-500"><span class="iconify" data-icon="lucide:phone" data-width="14"></span>'+d.footer.phone+'</li><li class="flex items-center gap-2 text-sm text-neutral-500"><span class="iconify" data-icon="lucide:mail" data-width="14"></span>'+d.footer.email+'</li></ul></div><div><h4 class="text-sm font-medium mb-4">Ikuti Kami</h4><div class="flex gap-3"><a href="'+d.footer.ig+'" target="_blank" class="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center hover:bg-white/10"><span class="iconify text-neutral-400" data-icon="lucide:instagram" data-width="18"></span></a><a href="'+d.footer.fb+'" target="_blank" class="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center hover:bg-white/10"><span class="iconify text-neutral-400" data-icon="lucide:facebook" data-width="18"></span></a><a href="'+d.footer.tt+'" target="_blank" class="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center hover:bg-white/10"><span class="iconify text-neutral-400" data-icon="lucide:music" data-width="18"></span></a></div></div></div><div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"><p class="text-xs text-neutral-600">&copy; '+new Date().getFullYear()+' JP Creative.</p><button onclick="tryAdmin()" class="text-xs text-neutral-700 hover:text-neutral-500 flex items-center gap-1"><span class="iconify" data-icon="lucide:shield" data-width="12"></span>Admin</button></div></div></footer>';
+}
 
-        function toggleMobileMenu() {
-            document.getElementById('mobileMenu').classList.toggle('hidden');
-        }
+/* ========== ADMIN ========== */
+var NAV=[{id:'dashboard',i:'lucide:layout-dashboard',l:'Dashboard'},{id:'hero',i:'lucide:sparkles',l:'Hero & Banner'},{id:'menus',i:'lucide:menu',l:'Menu Navigasi'},{id:'services',i:'lucide:briefcase',l:'Layanan'},{id:'packages',i:'lucide:tag',l:'Paket Harga'},{id:'pages',i:'lucide:file-text',l:'Halaman & Narasi'},{id:'footer',i:'lucide:footprints',l:'Footer'},{id:'settings',i:'lucide:cloud',l:'Penyimpanan'}];
 
-        function showAdminSection(section) {
-            document.querySelectorAll('.admin-section').forEach(s => s.classList.add('hidden'));
-            document.getElementById('section' + section.charAt(0).toUpperCase() + section.slice(1)).classList.remove('hidden');
-            document.querySelectorAll('[id^="tab"]').forEach(t => t.classList.remove('tab-active'));
-            document.getElementById('tab' + section.charAt(0).toUpperCase() + section.slice(1)).classList.add('tab-active');
-        }
+function renderAdmin(c){
+    var url=getSU(),cu=!!url;
+    c.innerHTML=
+    '<div class="flex min-h-screen bg-[#f1f5f9]">'+
+        '<div class="'+(sbOpen?'':'hidden')+' fixed inset-0 bg-black/40 z-40 lg:hidden" onclick="sbOpen=false;render()"></div>'+
+        '<aside class="w-64 bg-[#0f172a] text-white flex-shrink-0 fixed h-full z-50 overflow-y-auto admin-sb transition-transform duration-300 '+(sbOpen?'translate-x-0':'-translate-x-full')+' lg:translate-x-0">'+
+            '<div class="p-6 border-b border-white/10 flex items-center justify-between"><div class="flex items-center gap-3"><img src="'+LOGO_URL+'" alt="" class="h-8 w-auto object-contain" onerror="imgFallback(this,LOGO_FB,0)"><div><p class="text-sm font-semibold">JP Creative</p><p class="text-xs text-neutral-400">Admin</p></div></div><button onclick="sbOpen=false;render()" class="lg:hidden text-neutral-400 hover:text-white"><span class="iconify" data-icon="lucide:x" data-width="20"></span></button></div>'+
+            '<nav class="p-4 space-y-1">'+NAV.map(function(n){return '<button onclick="sec(\''+n.id+'\')" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all '+(section===n.id?'bg-purple-500/20 text-purple-400':'text-neutral-400 hover:bg-white/5 hover:text-white')+'"><span class="iconify" data-icon="'+n.i+'" data-width="18"></span>'+n.l+'</button>'}).join('')+'</nav>'+
+            '<div class="p-4 border-t border-white/10 mt-4 space-y-1"><button onclick="go(\'\')" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-neutral-400 hover:bg-white/5 hover:text-white"><span class="iconify" data-icon="lucide:eye" data-width="18"></span>Preview</button><button onclick="sessionStorage.removeItem(\'jpc_auth\');go(\'\')" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-red-400/70 hover:bg-red-500/10 hover:text-red-400"><span class="iconify" data-icon="lucide:log-out" data-width="18"></span>Keluar</button></div>'+
+        '</aside>'+
+        '<main class="flex-1 lg:ml-64 min-h-screen">'+
+            '<header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 lg:px-8 sticky top-0 z-30"><div class="flex items-center gap-3"><button onclick="sbOpen=true;render()" class="lg:hidden p-2 hover:bg-gray-100 rounded-lg"><span class="iconify text-gray-600" data-icon="lucide:menu" data-width="20"></span></button><h1 class="text-lg font-semibold text-gray-800">'+NAV.find(function(n){return n.id===section}).l+'</h1></div><div class="flex items-center gap-2"><div id="cloud-dot" class="cloud-dot '+(cu?'bg-green-500':'bg-gray-400')+'" title="'+(cu?'Cloud aktif':'Cloud belum diatur')+'"></div><span class="text-xs text-gray-500 hidden sm:inline">'+(cu?'Cloud':'Lokal')+'</span><button onclick="go(\'\')" class="text-sm text-gray-500 hover:text-gray-800 flex items-center gap-1 ml-2"><span class="iconify" data-icon="lucide:external-link" data-width="15"></span><span class="hidden sm:inline">Preview</span></button></div></header>'+
+            '<div class="p-4 lg:p-8" id="ac">'+aC()+'</div>'+
+        '</main>'+
+    '</div>';
+    updateDot();
+}
+function sec(s){section=s;editMode=false;editIdx=-1;sbOpen=false;render()}
+function cancel(){editMode=false;editIdx=-1;render()}
+function inp(lb,id,val,tp,ph,rows){tp=tp||'text';ph=ph||'';rows=rows||0;var v=(val||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');if(rows>0)return '<div><label class="block text-sm font-medium text-gray-700 mb-1.5">'+lb+'</label><textarea id="'+id+'" rows="'+rows+'" placeholder="'+ph+'" class="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-500 resize-none">'+v+'</textarea></div>';return '<div><label class="block text-sm font-medium text-gray-700 mb-1.5">'+lb+'</label><input type="'+tp+'" id="'+id+'" value="'+v+'" placeholder="'+ph+'" class="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-purple-500/30 focus:border-purple-500"></div>'}
+function chk(lb,id,on){return '<div class="flex items-center gap-3"><input type="checkbox" id="'+id+'" '+(on?'checked':'')+' class="hidden tcb"><label for="'+id+'" class="tlbl"></label><span class="text-sm text-gray-700">'+lb+'</span></div>'}
+function btns(fn){return '<div class="flex gap-3 mt-6 pt-6 border-t border-gray-100"><button onclick="'+fn+'" class="px-6 py-2.5 bg-purple-500 hover:bg-purple-600 text-white text-sm font-medium rounded-xl flex items-center gap-2"><span class="iconify" data-icon="lucide:save" data-width="16"></span>Simpan</button><button onclick="cancel()" class="px-6 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium rounded-xl">Batal</button></div>'}
+function cd(i){return '<div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">'+i+'</div>'}
+function aC(){switch(section){case 'dashboard':return aDash();case 'hero':return aHero();case 'menus':return aMenus();case 'services':return aSvc();case 'packages':return aPkg();case 'pages':return aPg();case 'footer':return aFt();case 'settings':return aSet();default:return aDash()}}
 
-        // ==================== RENDER FUNCTIONS (Sama seperti sebelumnya) ====================
-        function renderLanding() {
-            // Logo
-            if (siteData.logo) {
-                document.getElementById('navLogo').src = siteData.logo;
-                document.getElementById('footerLogo').src = siteData.logo;
-                document.getElementById('adminLogoPreview').src = siteData.logo;
-            }
-            // Background
-            if (siteData.background) {
-                document.getElementById('heroBgImage').src = siteData.background;
-                document.getElementById('adminBgPreview').src = siteData.background;
-                document.getElementById('heroBgContainer').style.display = 'block';
-            } else {
-                document.getElementById('heroBgContainer').style.display = 'none';
-            }
-            // Hero Text
-            document.getElementById('heroTitle').innerHTML = siteData.heroTitle.replace('\n', '<br><span class="gold-gradient">') + '</span>';
-            document.getElementById('heroSubtitle').textContent = siteData.heroSubtitle;
-            // Contact
-            document.getElementById('contactPhone').textContent = siteData.contact.phone;
-            document.getElementById('contactEmail').textContent = siteData.contact.email;
-            document.getElementById('contactAddress').textContent = siteData.contact.address;
-            // Menu
-            const menuHtml = siteData.menu.filter(m => m.active).map(m => `<a href="${m.link}" class="menu-item text-cream/90 hover:text-accent transition-colors">${m.title}</a>`).join('');
-            document.getElementById('desktopMenu').innerHTML = menuHtml;
-            const mobileMenuHtml = siteData.menu.filter(m => m.active).map(m => `<a href="${m.link}" class="text-cream/90 hover:text-accent transition-colors">${m.title}</a>`).join('');
-            document.getElementById('mobileMenuItems').innerHTML = mobileMenuHtml;
-            // Services
-            const servicesHtml = siteData.services.filter(s => s.active).map((s, i) => `
-                <div class="reveal glass-card rounded-2xl p-8 hover:border-accent/50 transition-all group" style="transition-delay: ${i * 0.1}s;">
-                    <div class="w-16 h-16 rounded-2xl bg-accent/20 flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition-transform">${icons[s.icon] || icons.pen}</div>
-                    <h3 class="font-display text-xl font-bold text-cream mb-3">${s.title}</h3><p class="text-cream/70">${s.description}</p>
-                </div>`).join('');
-            document.getElementById('servicesGrid').innerHTML = servicesHtml;
-            // About
-            const pageContent = siteData.pages.find(p => p.slug === 'tentang');
-            if (pageContent) document.getElementById('aboutContent').innerHTML = `<p>${pageContent.content}</p>`;
-            document.getElementById('aboutTitle').textContent = siteData.pages.find(p => p.slug === 'tentang')?.title || 'Mengapa Memilih JP Creative?';
-            // Features
-            const featuresHtml = siteData.features.map(f => `<div class="flex items-center gap-3"><div class="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">${icons.check}</div><span class="text-cream/90">${f}</span></div>`).join('');
-            document.getElementById('featuresList').innerHTML = featuresHtml;
-            // Packages
-            const packagesHtml = siteData.packages.filter(p => p.active).map((p, i) => `
-                <div class="reveal glass-card rounded-3xl p-8 relative ${p.popular ? 'border-accent' : ''}" style="transition-delay: ${i * 0.1}s;">
-                    ${p.popular ? '<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-primary px-4 py-1 rounded-full text-sm font-semibold">Terpopuler</div>' : ''}
-                    <h3 class="font-display text-2xl font-bold text-cream mb-2">${p.name}</h3>
-                    <div class="text-3xl font-bold gold-gradient mb-6">${p.price}</div>
-                    <ul class="space-y-3 mb-8">${p.features.map(f => `<li class="flex items-center gap-3 text-cream/80"><svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>${f}</li>`).join('')}</ul>
-                    <button class="w-full ${p.popular ? 'btn-gold text-primary' : 'border-2 border-accent/50 text-cream hover:bg-accent/10'} py-3 rounded-xl font-semibold transition-all">Pilih Paket</button>
-                </div>`).join('');
-            document.getElementById('packagesGrid').innerHTML = packagesHtml;
-            setTimeout(initReveal, 100);
-        }
+function aDash(){
+    var url=getSU(),cu=!!url;
+    return '<div class="space-y-6"><div class="grid grid-cols-2 lg:grid-cols-4 gap-4">'+
+        [{i:'lucide:menu',l:'Menu',v:D.menus.length,c:'bg-blue-500'},{i:'lucide:briefcase',l:'Layanan',v:D.services.length,c:'bg-purple-500'},{i:'lucide:tag',l:'Paket',v:D.packages.length,c:'bg-green-500'},{i:'lucide:file-text',l:'Halaman',v:D.pages.length,c:'bg-orange-500'}].map(function(s){return '<div class="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm"><div class="w-10 h-10 '+s.c+' rounded-xl flex items-center justify-center mb-3"><span class="iconify text-white" data-icon="'+s.i+'" data-width="20"></span></div><p class="text-2xl font-semibold text-gray-800">'+s.v+'</p><p class="text-xs text-gray-500">'+s.l+'</p></div>'}).join('')+'</div>'+
+    cd('<h3 class="text-base font-semibold text-gray-800 mb-4">Status Cloud</h3><div class="flex items-center gap-3 p-4 rounded-xl '+(cu?'bg-green-50':'bg-gray-50')+'"><div id="dash-dot" class="w-4 h-4 rounded-full flex-shrink-0 '+(cu?'bg-green-500':'bg-gray-400')+'"></div><div><p class="text-sm font-medium '+(cu?'text-green-700':'text-gray-600')+'">'+(cu?'Google Spreadsheet Terhubung':'Penyimpanan Lokal Saja')+'</p>'+(cu?'<p class="text-xs text-green-600 mt-0.5">Setiap Simpan otomatis sync ke spreadsheet</p>':'<p class="text-xs text-gray-400 mt-0.5">Klik Penyimpanan → Atur URL untuk aktifkan cloud</p>')+'</div></div>'+(cu?'<p class="text-xs text-gray-500 mt-2">URL: <code class="bg-gray-100 px-1.5 py-0.5 rounded text-[11px] break-all">'+url.substring(0,80)+(url.length>80?'...':'')+'</code></p>':''))+
+    cd('<h3 class="text-base font-semibold text-gray-800 mb-4">Aksi Cepat</h3><div class="grid grid-cols-2 gap-3"><button onclick="sec(\'hero\')" class="p-4 bg-gray-50 hover:bg-purple-50 rounded-xl text-sm font-medium text-gray-700 hover:text-purple-600 text-left">Edit Hero</button><button onclick="sec(\'menus\')" class="p-4 bg-gray-50 hover:bg-purple-50 rounded-xl text-sm font-medium text-gray-700 hover:text-purple-600 text-left">Edit Menu</button><button onclick="sec(\'pages\')" class="p-4 bg-gray-50 hover:bg-purple-50 rounded-xl text-sm font-medium text-gray-700 hover:text-purple-600 text-left">Tambah Halaman</button><button onclick="sec(\'settings\')" class="p-4 bg-gray-50 hover:bg-purple-50 rounded-xl text-sm font-medium text-gray-700 hover:text-purple-600 text-left">Penyimpanan</button></div>')+
+    '</div>';
+}
 
-        function renderAdmin() {
-            if (siteData.logo) document.getElementById('adminLogoPreview').src = siteData.logo;
-            if (siteData.background) document.getElementById('adminBgPreview').src = siteData.background;
-            document.getElementById('heroTitleInput').value = siteData.heroTitle.replace('\n', ' ');
-            document.getElementById('heroSubtitleInput').value = siteData.heroSubtitle;
-            document.getElementById('phoneInput').value = siteData.contact.phone;
-            document.getElementById('emailInput').value = siteData.contact.email;
-            document.getElementById('addressInput').value = siteData.contact.address;
-            renderPagesList();
-            renderMenuList();
-            renderServicesList();
-            renderPackagesList();
-        }
+function aHero(){var h=D.hero;return cd('<h3 class="text-base font-semibold text-gray-800 mb-6">Edit Hero</h3><div class="space-y-4 max-w-2xl">'+inp('Judul','ht',h.title,'','Judul hero')+inp('Subjudul','hs',h.subtitle,'','Subjudul',4)+'<div class="grid grid-cols-2 gap-4">'+inp('Teks Tombol','hc',h.ctaText,'','Tombol')+inp('Link Tombol','hcl',h.ctaLink,'','#section-id')+'</div></div>'+btns("svH()"))}
+function svH(){D.hero.title=document.getElementById('ht').value;D.hero.subtitle=document.getElementById('hs').value;D.hero.ctaText=document.getElementById('hc').value;D.hero.ctaLink=document.getElementById('hcl').value;save();render()}
 
-        function renderPagesList() {
-            const html = siteData.pages.map(p => `
-                <div class="p-4 flex items-center justify-between hover:bg-accent/5 transition-colors">
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
-                        <div><div class="text-cream font-medium">${p.title}</div><div class="text-cream/50 text-sm">#${p.slug} · ${p.active ? 'Aktif' : 'Nonaktif'}</div></div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <button onclick="editPage(${p.id})" class="p-2 text-cream/60 hover:text-accent transition-colors"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></button>
-                        <button onclick="deletePage(${p.id})" class="p-2 text-cream/60 hover:text-red-400 transition-colors"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg></button>
-                    </div>
-                </div>`).join('');
-            document.getElementById('pagesList').innerHTML = html;
-        }
+function aMenus(){if(editMode){var m=editIdx>=0?D.menus[editIdx]:{text:'',link:'',icon:'lucide:link'};return cd('<h3 class="text-base font-semibold text-gray-800 mb-6">'+(editIdx>=0?'Edit':'Tambah')+' Menu</h3><div class="space-y-4 max-w-lg">'+inp('Teks','mt2',m.text,'','Ghostwriter')+inp('Link','ml',m.link,'','#section-id')+inp('Icon','mi',m.icon,'','lucide:pen-tool')+'</div>'+btns("svM()"))}return cd('<div class="flex justify-between items-center mb-6"><h3 class="text-base font-semibold text-gray-800">Menu ('+D.menus.length+')</h3><button onclick="editMode=true;editIdx=-1;render()" class="px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white text-sm font-medium rounded-xl flex items-center gap-2"><span class="iconify" data-icon="lucide:plus" data-width="16"></span>Tambah</button></div><div class="space-y-2">'+(D.menus.length?D.menus.map(function(m,i){return '<div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl hover:bg-gray-100"><div class="flex items-center gap-3"><span class="iconify text-purple-500" data-icon="'+m.icon+'" data-width="18"></span><div><p class="text-sm font-medium text-gray-800">'+m.text+'</p><p class="text-xs text-gray-400">'+m.link+'</p></div></div><div class="flex gap-1"><button onclick="editMode=true;editIdx='+i+';render()" class="p-2 hover:bg-gray-200 rounded-lg"><span class="iconify text-gray-500" data-icon="lucide:pencil" data-width="15"></span></button><button onclick="if(confirm(\'Hapus?\')){D.menus.splice('+i+',1);save();render()}" class="p-2 hover:bg-red-50 rounded-lg"><span class="iconify text-red-400" data-icon="lucide:trash-2" data-width="15"></span></button></div></div>'}).join(''):'<p class="text-sm text-gray-400 text-center py-8">Kosong.</p>')+'</div>')}
+function svM(){var t=document.getElementById('mt2').value.trim();if(!t){toast('Teks wajib diisi','error');return}var o={text:t,link:document.getElementById('ml').value.trim()||'#',icon:document.getElementById('mi').value.trim()||'lucide:link'};if(editIdx>=0)D.menus[editIdx]=o;else D.menus.push(o);editMode=false;editIdx=-1;save();render()}
 
-        function renderMenuList() {
-            const html = siteData.menu.map(m => `
-                <div class="p-4 flex items-center justify-between hover:bg-accent/5 transition-colors">
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></div>
-                        <div><div class="text-cream font-medium">${m.title}</div><div class="text-cream/50 text-sm">${m.link} · ${m.active ? 'Aktif' : 'Nonaktif'}</div></div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <button onclick="editMenuItem(${m.id})" class="p-2 text-cream/60 hover:text-accent transition-colors"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></button>
-                        <button onclick="deleteMenuItem(${m.id})" class="p-2 text-cream/60 hover:text-red-400 transition-colors"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg></button>
-                    </div>
-                </div>`).join('');
-            document.getElementById('menuList').innerHTML = html;
-        }
+function aSvc(){if(editMode){var s=editIdx>=0?D.services[editIdx]:{id:'',icon:'lucide:briefcase',title:'',description:'',features:[]};return cd('<h3 class="text-base font-semibold text-gray-800 mb-6">'+(editIdx>=0?'Edit':'Tambah')+' Layanan</h3><div class="space-y-4 max-w-2xl">'+inp('ID','si',s.id,'','ghostwriter')+inp('Icon','si2',s.icon,'','lucide:pen-tool')+inp('Judul','st',s.title,'','Nama')+inp('Deskripsi','sd',s.description,'','Deskripsi',3)+inp('Fitur (satu per baris)','sf',s.features.join('\n'),'','Fitur 1\nFitur 2',4)+'</div>'+btns("svS()"))}return cd('<div class="flex justify-between items-center mb-6"><h3 class="text-base font-semibold text-gray-800">Layanan ('+D.services.length+')</h3><button onclick="editMode=true;editIdx=-1;render()" class="px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white text-sm font-medium rounded-xl flex items-center gap-2"><span class="iconify" data-icon="lucide:plus" data-width="16"></span>Tambah</button></div><div class="grid md:grid-cols-2 gap-3">'+(D.services.length?D.services.map(function(s,i){return '<div class="p-4 bg-gray-50 rounded-xl hover:bg-gray-100"><div class="flex items-start justify-between mb-2"><div class="flex items-center gap-2"><span class="iconify text-purple-500" data-icon="'+s.icon+'" data-width="18"></span><p class="text-sm font-medium text-gray-800">'+s.title+'</p></div><div class="flex gap-1"><button onclick="editMode=true;editIdx='+i+';render()" class="p-1.5 hover:bg-gray-200 rounded-lg"><span class="iconify text-gray-500" data-icon="lucide:pencil" data-width="14"></span></button><button onclick="if(confirm(\'Hapus?\')){D.services.splice('+i+',1);save();render()}" class="p-1.5 hover:bg-red-50 rounded-lg"><span class="iconify text-red-400" data-icon="lucide:trash-2" data-width="14"></span></button></div></div></div>'}).join(''):'<p class="text-sm text-gray-400 text-center py-8 col-span-2">Kosong.</p>')+'</div>')}
+function svS(){var t=document.getElementById('st').value.trim();if(!t){toast('Judul wajib','error');return}var o={id:document.getElementById('si').value.trim()||'svc-'+Date.now(),icon:document.getElementById('si2').value.trim()||'lucide:briefcase',title:t,description:document.getElementById('sd').value.trim(),features:document.getElementById('sf').value.split('\n').map(function(f){return f.trim()}).filter(Boolean)};if(editIdx>=0)D.services[editIdx]=o;else D.services.push(o);editMode=false;editIdx=-1;save();render()}
 
-        function renderServicesList() {
-            const html = siteData.services.map(s => `
-                <div class="admin-card rounded-xl p-6">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center text-accent">${icons[s.icon] || icons.pen}</div>
-                        <div class="flex gap-2">
-                            <button onclick="editService(${s.id})" class="p-2 text-cream/60 hover:text-accent transition-colors"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></button>
-                            <button onclick="deleteService(${s.id})" class="p-2 text-cream/60 hover:text-red-400 transition-colors"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg></button>
-                        </div>
-                    </div>
-                    <h4 class="text-cream font-semibold mb-2">${s.title}</h4><p class="text-cream/60 text-sm">${s.description}</p>
-                    <div class="mt-3 text-xs ${s.active ? 'text-green-400' : 'text-cream/40'}">${s.active ? 'Aktif' : 'Nonaktif'}</div>
-                </div>`).join('');
-            document.getElementById('servicesList').innerHTML = html;
-        }
+function aPkg(){if(editMode){var p=editIdx>=0?D.packages[editIdx]:{id:'',name:'',price:'',priceNote:'Mulai dari',description:'',features:[],highlight:false};return cd('<h3 class="text-base font-semibold text-gray-800 mb-6">'+(editIdx>=0?'Edit':'Tambah')+' Paket</h3><div class="space-y-4 max-w-2xl"><div class="grid grid-cols-2 gap-4">'+inp('Nama','pn',p.name,'','Standard')+inp('Harga','pp',p.price,'','250K')+'</div>'+inp('Keterangan','ppn',p.priceNote,'','Mulai dari')+chk('Populer','phl',p.highlight)+inp('Deskripsi','pd',p.description,'','Deskripsi')+inp('Fitur (satu per baris)','pf',p.features.join('\n'),'','Fitur 1\nFitur 2',5)+'</div>'+btns("svP()"))}return cd('<div class="flex justify-between items-center mb-6"><h3 class="text-base font-semibold text-gray-800">Paket ('+D.packages.length+')</h3><button onclick="editMode=true;editIdx=-1;render()" class="px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white text-sm font-medium rounded-xl flex items-center gap-2"><span class="iconify" data-icon="lucide:plus" data-width="16"></span>Tambah</button></div><div class="grid md:grid-cols-2 gap-3">'+(D.packages.length?D.packages.map(function(p,i){return '<div class="p-4 '+(p.highlight?'border-2 border-purple-300 bg-purple-50/50':'bg-gray-50')+' rounded-xl hover:bg-gray-100"><div class="flex items-start justify-between mb-2"><div><p class="text-sm font-medium text-gray-800">'+p.name+(p.highlight?' <span class="text-[10px] bg-purple-500 text-white px-2 py-0.5 rounded-full ml-1">Populer</span>':'')+'</p><p class="text-lg font-semibold text-purple-600">Rp '+p.price+'</p></div><div class="flex gap-1"><button onclick="editMode=true;editIdx='+i+';render()" class="p-1.5 hover:bg-gray-200 rounded-lg"><span class="iconify text-gray-500" data-icon="lucide:pencil" data-width="14"></span></button><button onclick="if(confirm(\'Hapus?\')){D.packages.splice('+i+',1);save();render()}" class="p-1.5 hover:bg-red-50 rounded-lg"><span class="iconify text-red-400" data-icon="lucide:trash-2" data-width="14"></span></button></div></div></div>'}).join(''):'<p class="text-sm text-gray-400 text-center py-8 col-span-2">Kosong.</p>')+'</div>')}
+function svP(){var n=document.getElementById('pn').value.trim();if(!n){toast('Nama wajib','error');return}var o={id:n.toLowerCase().replace(/\s+/g,'-')||'pkg-'+Date.now(),name:n,price:document.getElementById('pp').value.trim(),priceNote:document.getElementById('ppn').value.trim()||'Mulai dari',description:document.getElementById('pd').value.trim(),features:document.getElementById('pf').value.split('\n').map(function(f){return f.trim()}).filter(Boolean),highlight:document.getElementById('phl').checked};if(editIdx>=0)D.packages[editIdx]=o;else D.packages.push(o);editMode=false;editIdx=-1;save();render()}
 
-        function renderPackagesList() {
-            const html = siteData.packages.map(p => `
-                <div class="admin-card rounded-xl p-6 ${p.popular ? 'border-accent' : ''}">
-                    <div class="flex justify-between items-start mb-4">
-                        <div><h4 class="text-cream font-semibold">${p.name}</h4><div class="text-2xl font-bold gold-gradient">${p.price}</div></div>
-                        <div class="flex gap-2">
-                            <button onclick="editPackage(${p.id})" class="p-2 text-cream/60 hover:text-accent transition-colors"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></button>
-                            <button onclick="deletePackage(${p.id})" class="p-2 text-cream/60 hover:text-red-400 transition-colors"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg></button>
-                        </div>
-                    </div>
-                    <ul class="space-y-2 text-sm">${p.features.map(f => `<li class="text-cream/70 flex items-center gap-2">${icons.check} ${f}</li>`).join('')}</ul>
-                </div>`).join('');
-            document.getElementById('packagesList').innerHTML = html;
-        }
+function aPg(){if(editMode){var p=editIdx>=0?D.pages[editIdx]:{id:'',title:'',content:'',image:'',show:true};return cd('<h3 class="text-base font-semibold text-gray-800 mb-6">'+(editIdx>=0?'Edit':'Tambah')+' Halaman</h3><div class="space-y-4 max-w-2xl">'+inp('ID','pid',p.id,'','tentang')+inp('Judul','pti',p.title,'','Judul')+inp('Konten','pic',p.content,'','Narasi...',6)+imgComp('pgi',p.image)+chk('Tampilkan','pgs',p.show)+'</div>'+btns("svPg()"))}return cd('<div class="flex justify-between items-center mb-6"><h3 class="text-base font-semibold text-gray-800">Halaman ('+D.pages.length+')</h3><button onclick="editMode=true;editIdx=-1;render()" class="px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white text-sm font-medium rounded-xl flex items-center gap-2"><span class="iconify" data-icon="lucide:plus" data-width="16"></span>Tambah</button></div><div class="space-y-2">'+(D.pages.length?D.pages.map(function(p,i){return '<div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl hover:bg-gray-100"><div class="flex items-center gap-3"><span class="iconify '+(p.show?'text-green-500':'text-gray-400')+'" data-icon="'+(p.show?'lucide:eye':'lucide:eye-off')+'" data-width="18"></span><div><p class="text-sm font-medium text-gray-800">'+(p.title||'(Tanpa judul)')+'</p><p class="text-xs text-gray-400">#'+p.id+(p.image?' · '+(isB64(p.image)?'Lokal':'URL'):'')+'</p></div></div><div class="flex gap-1"><button onclick="editMode=true;editIdx='+i+';render()" class="p-2 hover:bg-gray-200 rounded-lg"><span class="iconify text-gray-500" data-icon="lucide:pencil" data-width="15"></span></button><button onclick="if(confirm(\'Hapus?\')){D.pages.splice('+i+',1);save();render()}" class="p-2 hover:bg-red-50 rounded-lg"><span class="iconify text-red-400" data-icon="lucide:trash-2" data-width="15"></span></button></div></div>'}).join(''):'<p class="text-sm text-gray-400 text-center py-8">Kosong.</p>')+'</div>')}
+function svPg(){var t=document.getElementById('pti').value.trim();if(!t){toast('Judul wajib','error');return}imgDo('pgi',1200,function(img){var o={id:document.getElementById('pid').value.trim()||'page-'+Date.now(),title:t,content:document.getElementById('pic').value.trim(),image:img,show:document.getElementById('pgs').checked};if(editIdx>=0)D.pages[editIdx]=o;else D.pages.push(o);editMode=false;editIdx=-1;save();render()})}
 
-        // ==================== MODAL & CRUD FUNCTIONS (Disesuaikan untuk API) ====================
-        function openModal() { document.getElementById('modal').classList.remove('hidden'); document.getElementById('modal').classList.add('flex'); }
-        function closeModal() { document.getElementById('modal').classList.add('hidden'); document.getElementById('modal').classList.remove('flex'); }
+function aFt(){var f=D.footer;return cd('<h3 class="text-base font-semibold text-gray-800 mb-6">Footer</h3><div class="space-y-4 max-w-2xl">'+inp('Deskripsi','fd',f.desc,'','Deskripsi',2)+inp('Alamat','fa',f.address,'','Alamat')+inp('Telepon','fp2',f.phone,'','08xx')+inp('Email','fe',f.email,'','email')+'<div class="border-t border-gray-100 pt-4"><p class="text-sm font-medium text-gray-700 mb-3">Sosial Media</p><div class="space-y-3">'+inp('Instagram','fig',f.ig,'','URL')+inp('Facebook','ffb',f.fb,'','URL')+inp('TikTok','ftt',f.tt,'','URL')+'</div></div></div>'+btns("svF()"))}
+function svF(){D.footer.desc=document.getElementById('fd').value.trim();D.footer.address=document.getElementById('fa').value.trim();D.footer.phone=document.getElementById('fp2').value.trim();D.footer.email=document.getElementById('fe').value.trim();D.footer.ig=document.getElementById('fig').value.trim();D.footer.fb=document.getElementById('ffb').value.trim();D.footer.tt=document.getElementById('ftt').value.trim();save();render()}
 
-        // ... (Fungsi modal Page, Menu, Service, Package tetap sama persis seperti kode sebelumnya) ...
-        // Untuk menghemat ruang, saya tidak menulis ulang fungsi yang sama, tapi di real code ini harus ada.
-        // Saya akan sertakan fungsi save yang dimodifikasi saja, sisanya copy-paste dari kode sebelumnya.
-        
-        // CATATAN: Fungsi saveX di bawah sudah dimodifikasi untuk memanggil saveToServer()
+function aSet(){
+    var url=getSU(),cu=!!url,sz=(new Blob([JSON.stringify(D)]).size/1024).toFixed(1);
+    return '<div class="space-y-6">'+
+    cd('<div class="flex items-center gap-3 mb-6"><div class="w-10 h-10 bg-purple-500 rounded-xl flex items-center justify-center"><span class="iconify text-white" data-icon="lucide:cloud" data-width="20"></span></div><h3 class="text-base font-semibold text-gray-800">Penyimpanan Cloud</h3></div>'+
+        '<div class="flex items-center gap-3 p-4 rounded-xl '+(cu?'bg-green-50':'bg-gray-50')+'"><div class="w-4 h-4 rounded-full flex-shrink-0 '+(cu?'bg-green-500':'bg-gray-400')+'"></div><div><p class="text-sm font-medium '+(cu?'text-green-700':'text-gray-600')+'">'+(cu?'Terhubung ke Spreadsheet':'Tidak terhubung')+'</p>'+(cu?'<p class="text-xs text-green-600 mt-0.5">Setiap Simpan auto-sync</p>':'<p class="text-xs text-gray-400 mt-0.5">Klik tombol di bawah</p>')+'</div></div>'+
+        (cu?'<div class="p-3 bg-gray-50 rounded-xl"><p class="text-xs text-gray-500 mb-1">URL:</p><p class="text-xs text-gray-700 break-all font-mono">'+url+'</p></div>':'')+
+        '<div class="flex flex-wrap gap-3"><button onclick="aturURL()" class="px-5 py-2.5 bg-purple-500 hover:bg-purple-600 text-white text-sm font-medium rounded-xl flex items-center gap-2"><span class="iconify" data-icon="lucide:link" data-width="15"></span>'+(cu?'Ubah URL':'Atur URL Google Script')+'</button><button onclick="syncFromCloud()" class="px-5 py-2.5 bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm font-medium rounded-xl flex items-center gap-2 '+(cu?'':'opacity-50 cursor-not-allowed')+'" '+(cu?'':'disabled')+'><span class="iconify" data-icon="lucide:download-cloud" data-width="15"></span>Tarik dari Cloud</button><button onclick="pushCloud()" class="px-5 py-2.5 bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm font-medium rounded-xl flex items-center gap-2 '+(cu?'':'opacity-50 cursor-not-allowed')+'" '+(cu?'':'disabled')+'><span class="iconify" data-icon="lucide:upload-cloud" data-width="15"></span>Kirim ke Cloud</button></div>'+
+        '<div class="border-t border-gray-100 pt-4 mt-2"><p class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">Setup Google Spreadsheet</p><ol class="text-xs text-gray-500 space-y-2 list-decimal list-inside"><li>Buka <strong>Google Sheets</strong> baru</li><li>Klik <strong>Extensions → Apps Script</strong></li><li>Hapus kode default, paste script di bawah</li><li>Klik <strong>Deploy → New Deployment</strong></li><li>Type: <strong>Web app</strong>, Execute as: <strong>Me</strong></li><li>Who has access: <strong>Anyone</strong></li><li>Klik <strong>Deploy</strong>, copy URL-nya</li><li><strong class="text-red-600">PENTING:</strong> Buka URL tersebut di browser baru, klik "Allow". Lihat tulisan "{status:ok}" berarti berhasil</li><li>Kembali ke sini, klik <strong>"Atur URL"</strong>, paste URL</li></ol></div>'+
+        '<div class="p-3 bg-red-50 rounded-xl"><p class="text-xs text-red-700 font-medium mb-1">Langkah #8 PENTING!</p><p class="text-xs text-red-600">Kalau kamu tidak pernah buka URL script di browser, semua POST request akan gagal secara diam-diam. <strong>Wajib buka URL dulu sekali di browser, klik Allow</strong>, baru setelah itu sync akan jalan.</p></div>'+
+        '<div class="p-3 bg-yellow-50 rounded-xl"><p class="text-xs text-yellow-700 font-medium mb-1">Buka di HP Baru</p><p class="text-xs text-yellow-600">Saat pertama kali buka di device baru, data muncul dari default. Buka admin → Penyimpanan → klik <strong>"Tarik dari Cloud"</strong> untuk ambil data terbaru dari spreadsheet.</p></div>'
+    )+
+    cd('<h3 class="text-base font-semibold text-gray-800 mb-4">Info</h3><div class="grid grid-cols-2 sm:grid-cols-3 gap-4"><div><p class="text-xs text-gray-500">Lokal</p><p class="text-sm font-semibold text-gray-800">'+sz+' KB</p></div><div><p class="text-xs text-gray-500">Menu</p><p class="text-sm font-semibold text-gray-800">'+D.menus.length+'</p></div><div><p class="text-xs text-gray-500">Layanan</p><p class="text-sm font-semibold text-gray-800">'+D.services.length+'</p></div><div><p class="text-xs text-gray-500">Paket</p><p class="text-sm font-semibold text-gray-800">'+D.packages.length+'</p></div><div><p class="text-xs text-gray-500">Halaman</p><p class="text-sm font-semibold text-gray-800">'+D.pages.length+'</p></div><div><p class="text-xs text-gray-500">Versi</p><p class="text-sm font-semibold text-gray-800">3.1.0</p></div></div>')+
+    cd('<div class="flex flex-wrap gap-3"><button onclick="exportData()" class="px-5 py-2.5 bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium rounded-xl flex items-center gap-2"><span class="iconify" data-icon="lucide:download" data-width="16"></span>Ekspor JSON</button><input type="file" id="impf" accept=".json" class="hidden" onchange="importData(this)"><button onclick="document.getElementById(\'impf\').click()" class="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium rounded-xl flex items-center gap-2"><span class="iconify" data-icon="lucide:upload" data-width="16"></span>Impor JSON</button></div>')+
+    cd('<h3 class="text-base font-semibold text-red-600 mb-4">Zona Berbahaya</h3><button onclick="resetAll()" class="px-5 py-2.5 bg-red-500 hover:bg-red-600 text-white text-sm font-medium rounded-xl flex items-center gap-2"><span class="iconify" data-icon="lucide:alert-triangle" data-width="16"></span>Reset Semua Data</button>')+
+    '</div>';
+}
 
-        function openPageModal(data = null) {
-            const isEdit = data !== null;
-            document.getElementById('modalContent').innerHTML = `
-                <h3 class="font-display text-2xl font-bold text-cream mb-6">${isEdit ? 'Edit Halaman' : 'Tambah Halaman'}</h3>
-                <form onsubmit="savePage(event, ${isEdit ? data.id : 'null'})">
-                    <div class="space-y-4">
-                        <div><label class="block text-cream/80 mb-2 text-sm">Judul</label><input type="text" id="pageTitle" value="${isEdit ? data.title : ''}" class="w-full px-4 py-3 rounded-xl input-style" placeholder="Judul halaman" required></div>
-                        <div><label class="block text-cream/80 mb-2 text-sm">Slug (URL)</label><input type="text" id="pageSlug" value="${isEdit ? data.slug : ''}" class="w-full px-4 py-3 rounded-xl input-style" placeholder="contoh: tentang" required></div>
-                        <div><label class="block text-cream/80 mb-2 text-sm">Konten</label><textarea id="pageContent" rows="5" class="w-full px-4 py-3 rounded-xl input-style resize-none" placeholder="Tulis konten halaman..." required>${isEdit ? data.content : ''}</textarea></div>
-                        <div class="flex items-center gap-3"><input type="checkbox" id="pageActive" ${isEdit && data.active ? 'checked' : ''} class="w-5 h-5 rounded accent-accent"><label for="pageActive" class="text-cream/80">Aktif</label></div>
-                        <div class="flex gap-3 pt-4"><button type="button" onclick="closeModal()" class="flex-1 px-6 py-3 rounded-xl border border-accent/30 text-cream hover:bg-accent/10 transition-all">Batal</button><button type="submit" class="flex-1 btn-gold px-6 py-3 rounded-xl font-semibold text-primary">Simpan</button></div>
-                    </div>
-                </form>`;
-            openModal();
-        }
-        
-        async function savePage(event, id) {
-            event.preventDefault();
-            const page = { id: id || Date.now(), title: document.getElementById('pageTitle').value, slug: document.getElementById('pageSlug').value.toLowerCase().replace(/\s+/g, '-'), content: document.getElementById('pageContent').value, active: document.getElementById('pageActive').checked };
-            if (id) { const index = siteData.pages.findIndex(p => p.id === id); siteData.pages[index] = page; } else { siteData.pages.push(page); }
-            await saveToServer();
-            closeModal(); renderPagesList(); renderLanding();
-        }
-        function editPage(id) { openPageModal(siteData.pages.find(p => p.id === id)); }
-        async function deletePage(id) { if (confirm('Yakin hapus?')) { siteData.pages = siteData.pages.filter(p => p.id !== id); await saveToServer(); renderPagesList(); renderLanding(); } }
-
-        function openMenuModal(data = null) {
-            const isEdit = data !== null;
-            document.getElementById('modalContent').innerHTML = `
-                <h3 class="font-display text-2xl font-bold text-cream mb-6">${isEdit ? 'Edit Menu' : 'Tambah Menu'}</h3>
-                <form onsubmit="saveMenuItem(event, ${isEdit ? data.id : 'null'})">
-                    <div class="space-y-4">
-                        <div><label class="block text-cream/80 mb-2 text-sm">Judul Menu</label><input type="text" id="menuTitle" value="${isEdit ? data.title : ''}" class="w-full px-4 py-3 rounded-xl input-style" placeholder="Nama menu" required></div>
-                        <div><label class="block text-cream/80 mb-2 text-sm">Link</label><input type="text" id="menuLink" value="${isEdit ? data.link : ''}" class="w-full px-4 py-3 rounded-xl input-style" placeholder="#layanan atau https://..." required></div>
-                        <div class="flex items-center gap-3"><input type="checkbox" id="menuActive" ${isEdit && data.active ? 'checked' : ''} class="w-5 h-5 rounded accent-accent"><label for="menuActive" class="text-cream/80">Tampilkan</label></div>
-                        <div class="flex gap-3 pt-4"><button type="button" onclick="closeModal()" class="flex-1 px-6 py-3 rounded-xl border border-accent/30 text-cream hover:bg-accent/10 transition-all">Batal</button><button type="submit" class="flex-1 btn-gold px-6 py-3 rounded-xl font-semibold text-primary">Simpan</button></div>
-                    </div>
-                </form>`;
-            openModal();
-        }
-        async function saveMenuItem(event, id) {
-            event.preventDefault();
-            const item = { id: id || Date.now(), title: document.getElementById('menuTitle').value, link: document.getElementById('menuLink').value, active: document.getElementById('menuActive').checked };
-            if (id) { const index = siteData.menu.findIndex(m => m.id === id); siteData.menu[index] = item; } else { siteData.menu.push(item); }
-            await saveToServer();
-            closeModal(); renderMenuList(); renderLanding();
-        }
-        function editMenuItem(id) { openMenuModal(siteData.menu.find(m => m.id === id)); }
-        async function deleteMenuItem(id) { if (confirm('Yakin hapus?')) { siteData.menu = siteData.menu.filter(m => m.id !== id); await saveToServer(); renderMenuList(); renderLanding(); } }
-
-        function openServiceModal(data = null) {
-            const isEdit = data !== null;
-            document.getElementById('modalContent').innerHTML = `
-                <h3 class="font-display text-2xl font-bold text-cream mb-6">${isEdit ? 'Edit Layanan' : 'Tambah Layanan'}</h3>
-                <form onsubmit="saveService(event, ${isEdit ? data.id : 'null'})">
-                    <div class="space-y-4">
-                        <div><label class="block text-cream/80 mb-2 text-sm">Judul</label><input type="text" id="serviceTitle" value="${isEdit ? data.title : ''}" class="w-full px-4 py-3 rounded-xl input-style" required></div>
-                        <div><label class="block text-cream/80 mb-2 text-sm">Deskripsi</label><textarea id="serviceDesc" rows="3" class="w-full px-4 py-3 rounded-xl input-style resize-none" required>${isEdit ? data.description : ''}</textarea></div>
-                        <div><label class="block text-cream/80 mb-2 text-sm">Ikon</label><select id="serviceIcon" class="w-full px-4 py-3 rounded-xl input-style"><option value="pen" ${isEdit && data.icon === 'pen' ? 'selected' : ''}>Pena</option><option value="book" ${isEdit && data.icon === 'book' ? 'selected' : ''}>Buku</option><option value="rocket" ${isEdit && data.icon === 'rocket' ? 'selected' : ''}>Roket</option><option value="truck" ${isEdit && data.icon === 'truck' ? 'selected' : ''}>Truk</option></select></div>
-                        <div class="flex items-center gap-3"><input type="checkbox" id="serviceActive" ${isEdit && data.active ? 'checked' : ''} class="w-5 h-5 rounded accent-accent"><label for="serviceActive" class="text-cream/80">Aktif</label></div>
-                        <div class="flex gap-3 pt-4"><button type="button" onclick="closeModal()" class="flex-1 px-6 py-3 rounded-xl border border-accent/30 text-cream hover:bg-accent/10 transition-all">Batal</button><button type="submit" class="flex-1 btn-gold px-6 py-3 rounded-xl font-semibold text-primary">Simpan</button></div>
-                    </div>
-                </form>`;
-            openModal();
-        }
-        async function saveService(event, id) {
-            event.preventDefault();
-            const service = { id: id || Date.now(), title: document.getElementById('serviceTitle').value, description: document.getElementById('serviceDesc').value, icon: document.getElementById('serviceIcon').value, active: document.getElementById('serviceActive').checked };
-            if (id) { const index = siteData.services.findIndex(s => s.id === id); siteData.services[index] = service; } else { siteData.services.push(service); }
-            await saveToServer();
-            closeModal(); renderServicesList(); renderLanding();
-        }
-        function editService(id) { openServiceModal(siteData.services.find(s => s.id === id)); }
-        async function deleteService(id) { if (confirm('Yakin hapus?')) { siteData.services = siteData.services.filter(s => s.id !== id); await saveToServer(); renderServicesList(); renderLanding(); } }
-
-        function openPackageModal(data = null) {
-            const isEdit = data !== null;
-            document.getElementById('modalContent').innerHTML = `
-                <h3 class="font-display text-2xl font-bold text-cream mb-6">${isEdit ? 'Edit Paket' : 'Tambah Paket'}</h3>
-                <form onsubmit="savePackage(event, ${isEdit ? data.id : 'null'})">
-                    <div class="space-y-4">
-                        <div><label class="block text-cream/80 mb-2 text-sm">Nama Paket</label><input type="text" id="packageName" value="${isEdit ? data.name : ''}" class="w-full px-4 py-3 rounded-xl input-style" required></div>
-                        <div><label class="block text-cream/80 mb-2 text-sm">Harga</label><input type="text" id="packagePrice" value="${isEdit ? data.price : ''}" class="w-full px-4 py-3 rounded-xl input-style" required></div>
-                        <div><label class="block text-cream/80 mb-2 text-sm">Fitur (per baris)</label><textarea id="packageFeatures" rows="5" class="w-full px-4 py-3 rounded-xl input-style resize-none" required>${isEdit ? data.features.join('\n') : ''}</textarea></div>
-                        <div class="flex items-center gap-6">
-                            <div class="flex items-center gap-3"><input type="checkbox" id="packagePopular" ${isEdit && data.popular ? 'checked' : ''} class="w-5 h-5 rounded accent-accent"><label for="packagePopular" class="text-cream/80">Populer</label></div>
-                            <div class="flex items-center gap-3"><input type="checkbox" id="packageActive" ${isEdit && data.active ? 'checked' : ''} class="w-5 h-5 rounded accent-accent"><label for="packageActive" class="text-cream/80">Aktif</label></div>
-                        </div>
-                        <div class="flex gap-3 pt-4"><button type="button" onclick="closeModal()" class="flex-1 px-6 py-3 rounded-xl border border-accent/30 text-cream hover:bg-accent/10 transition-all">Batal</button><button type="submit" class="flex-1 btn-gold px-6 py-3 rounded-xl font-semibold text-primary">Simpan</button></div>
-                    </div>
-                </form>`;
-            openModal();
-        }
-        async function savePackage(event, id) {
-            event.preventDefault();
-            const pkg = { id: id || Date.now(), name: document.getElementById('packageName').value, price: document.getElementById('packagePrice').value, features: document.getElementById('packageFeatures').value.split('\n').filter(f => f.trim()), popular: document.getElementById('packagePopular').checked, active: document.getElementById('packageActive').checked };
-            if (id) { const index = siteData.packages.findIndex(p => p.id === id); siteData.packages[index] = pkg; } else { siteData.packages.push(pkg); }
-            await saveToServer();
-            closeModal(); renderPackagesList(); renderLanding();
-        }
-        function editPackage(id) { openPackageModal(siteData.packages.find(p => p.id === id)); }
-        async function deletePackage(id) { if (confirm('Yakin hapus?')) { siteData.packages = siteData.packages.filter(p => p.id !== id); await saveToServer(); renderPackagesList(); renderLanding(); } }
-
-        // ==================== IMAGE UPLOAD HANDLERS ====================
-        async function handleLogoUpload(event) {
-            const file = event.target.files[0];
-            if (file) {
-                try {
-                    const url = await uploadImageToServer(file);
-                    siteData.logo = url;
-                    await saveToServer();
-                    document.getElementById('adminLogoPreview').src = url;
-                    renderLanding();
-                } catch (e) {
-                    alert('Gagal upload logo: ' + e.message);
-                }
-            }
-        }
-
-        async function handleBgUpload(event) {
-            const file = event.target.files[0];
-            if (file) {
-                try {
-                    const url = await uploadImageToServer(file);
-                    siteData.background = url;
-                    await saveToServer();
-                    document.getElementById('adminBgPreview').src = url;
-                    renderLanding();
-                } catch (e) {
-                    alert('Gagal upload background: ' + e.message);
-                }
-            }
-        }
-
-        async function saveHeroText() {
-            siteData.heroTitle = document.getElementById('heroTitleInput').value;
-            siteData.heroSubtitle = document.getElementById('heroSubtitleInput').value;
-            await saveToServer();
-            renderLanding();
-        }
-
-        async function saveContact() {
-            siteData.contact.phone = document.getElementById('phoneInput').value;
-            siteData.contact.email = document.getElementById('emailInput').value;
-            siteData.contact.address = document.getElementById('addressInput').value;
-            await saveToServer();
-            renderLanding();
-        }
-
-        // ==================== UTILITIES ====================
-        function initReveal() {
-            const reveals = document.querySelectorAll('.reveal');
-            const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-            reveals.forEach(el => observer.observe(el));
-        }
-
-        function initParallax() {
-            const bg = document.getElementById('heroBgImage');
-            if (!bg) return;
-            window.addEventListener('scroll', () => { if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; const scrolled = window.pageYOffset; bg.style.transform = `translateY(${scrolled * 0.3}px)`; });
-        }
-
-        // ==================== INIT ====================
-        document.addEventListener('DOMContentLoaded', async () => {
-            await fetchSiteData();
-            renderLanding();
-            initParallax();
-        });
-    </script>
+/* ========== INIT ========== */
+window.addEventListener('hashchange',function(){if(window.location.hash==='#admin'&&sessionStorage.getItem('jpc_auth')!=='1'){window.location.hash='';showPwd();return}editMode=false;editIdx=-1;section='dashboard';render()});
+D=load();
+if(window.location.hash==='#admin'&&sessionStorage.getItem('jpc_auth')!=='1'){window.location.hash='';render();showPwd()}else{render()}
+</script>
 </body>
 </html>
